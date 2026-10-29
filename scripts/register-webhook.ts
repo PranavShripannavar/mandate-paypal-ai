@@ -1,4 +1,4 @@
-import {readFileSync,writeFileSync} from 'node:fs';
+import {readFileSync,writeFileSync,existsSync} from 'node:fs';
 process.loadEnvFile('.env');
 const url=new URL(process.argv[2]??'');if(url.protocol!=='https:'||url.pathname!=='/api/paypal/webhook')throw new Error('Public HTTPS webhook URL required');
 const base='https://api-m.sandbox.paypal.com';
@@ -18,4 +18,9 @@ if(typeof webhook.id!=='string')throw new Error('Webhook ID missing');
 const env=readFileSync('.env','utf8');const line='PAYPAL_WEBHOOK_ID='+webhook.id;
 writeFileSync('.env',/^PAYPAL_WEBHOOK_ID=.*$/m.test(env)?env.replace(/^PAYPAL_WEBHOOK_ID=.*$/m,line):env.trimEnd()+'\n'+line+'\n');
 const evidence={at:new Date().toISOString(),environment:'sandbox',id:webhook.id,url:webhook.url,event_types:webhook.event_types,http,debugId,verifiedTransactionSignatures:false};
+if(existsSync('evidence/webhook-registration.json')){
+ const previous=JSON.parse(readFileSync('evidence/webhook-registration.json','utf8'));
+ if(previous.id!==webhook.id)writeFileSync(`evidence/webhook-registration-${previous.id}.json`,JSON.stringify(previous,null,2));
+}
+writeFileSync(`evidence/webhook-registration-${webhook.id}.json`,JSON.stringify(evidence,null,2));
 writeFileSync('evidence/webhook-registration.json',JSON.stringify(evidence,null,2));console.log(JSON.stringify(evidence));

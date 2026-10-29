@@ -12,9 +12,12 @@ try{
  if(['capture','hold'].includes(mode)&&p.state==='BUYER_APPROVED')p=await service.execute(p.owner_id,p.id,'AUTHORIZE');
  if(mode==='capture'&&p.state==='AUTHORIZED')p=await service.execute(p.owner_id,p.id,'CAPTURE');
  if(mode==='revoke'){
+   if(p.state!=='AUTHORIZED'||!p.authorization_id||p.capture_id)throw new Error('Revoke/void verification requires a confirmed uncaptured authorization');
    await service.revoke(p.owner_id,p.mandate_id);
    let reason='';try{await service.execute(p.owner_id,p.id,'CAPTURE');}catch(e){reason=e instanceof Error?e.message:'UNKNOWN';}
    await db.query("INSERT INTO audit(owner_id,mandate_id,purchase_id,actor,event,details) VALUES($1,$2,$3,'system','CAPTURE_BLOCKED_AFTER_REVOCATION',$4)",[p.owner_id,p.mandate_id,p.id,JSON.stringify({reason})]);
+   if(reason!=='REVOKED')throw new Error('Expected REVOKED capture rejection was not confirmed; inspect evidence before further operations');
+   await service.execute(p.owner_id,p.id,'VOID');
    await sweep(service);
  }
  p=await service.get(p.owner_id,p.id);
