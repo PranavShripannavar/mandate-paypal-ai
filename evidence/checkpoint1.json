@@ -1,0 +1,253 @@
+[
+  {
+    "at": "2026-10-27T12:30:57.874Z",
+    "operation": "oauth",
+    "http": 200,
+    "debugId": "ca511b710ba93",
+    "result": "token obtained; token excluded"
+  },
+  {
+    "at": "2026-10-27T12:30:58.746Z",
+    "operation": "create",
+    "method": "POST",
+    "route": "/v2/checkout/orders",
+    "requestId": "f4211aca-c266-471f-94c0-59090c23b5fe",
+    "request": {
+      "intent": "AUTHORIZE",
+      "purchase_units": [
+        {
+          "reference_id": "97eb2381-ad81-4d10-a3de-f8636b7516b2",
+          "custom_id": "97eb2381-ad81-4d10-a3de-f8636b7516b2",
+          "payee": {
+            "merchant_id": "535MGHZJ8PNVC"
+          },
+          "amount": {
+            "currency_code": "USD",
+            "value": "1.00",
+            "breakdown": {
+              "item_total": {
+                "currency_code": "USD",
+                "value": "1.00"
+              },
+              "tax_total": {
+                "currency_code": "USD",
+                "value": "0.00"
+              },
+              "shipping": {
+                "currency_code": "USD",
+                "value": "0.00"
+              }
+            }
+          },
+          "items": [
+            {
+              "name": "[REDACTED]",
+              "quantity": "1",
+              "unit_amount": {
+                "currency_code": "USD",
+                "value": "1.00"
+              },
+              "category": "PHYSICAL_GOODS"
+            }
+          ]
+        }
+      ],
+      "payment_source": "[REDACTED]"
+    },
+    "http": 200,
+    "debugId": "ca511b7135807",
+    "response": {
+      "id": "7N7760476B844150C",
+      "intent": "AUTHORIZE",
+      "status": "PAYER_ACTION_REQUIRED",
+      "payment_source": "[REDACTED]",
+      "purchase_units": [
+        {
+          "reference_id": "97eb2381-ad81-4d10-a3de-f8636b7516b2",
+          "amount": {
+            "currency_code": "USD",
+            "value": "1.00",
+            "breakdown": {
+              "item_total": {
+                "currency_code": "USD",
+                "value": "1.00"
+              },
+              "shipping": {
+                "currency_code": "USD",
+                "value": "0.00"
+              },
+              "tax_total": {
+                "currency_code": "USD",
+                "value": "0.00"
+              }
+            }
+          },
+          "payee": {
+            "merchant_id": "535MGHZJ8PNVC"
+          },
+          "custom_id": "97eb2381-ad81-4d10-a3de-f8636b7516b2",
+          "items": [
+            {
+              "name": "[REDACTED]",
+              "unit_amount": {
+                "currency_code": "USD",
+                "value": "1.00"
+              },
+              "quantity": "1",
+              "category": "PHYSICAL_GOODS"
+            }
+          ]
+        }
+      ],
+      "links": [
+        {
+          "href": "https://api.sandbox.paypal.com/v2/checkout/orders/7N7760476B844150C",
+          "rel": "self",
+          "method": "GET"
+        },
+        {
+          "href": "https://www.sandbox.paypal.com/checkoutnow?token=7N7760476B844150C",
+          "rel": "payer-action",
+          "method": "GET"
+        }
+      ]
+    }
+  },
+  {
+    "at": "2026-10-27T12:32:01.744Z",
+    "operation": "oauth",
+    "http": 200,
+    "debugId": "ca511b8a038a8",
+    "result": "token obtained; token excluded"
+  },
+  {
+    "at": "2026-10-27T12:32:02.164Z",
+    "operation": "read-order",
+    "method": "GET",
+    "route": "/v2/checkout/orders/7N7760476B844150C",
+    "http": 200,
+    "debugId": "ca511b8a27d40",
+    "response": {
+      "id": "7N7760476B844150C",
+      "intent": "AUTHORIZE",
+      "status": "PAYER_ACTION_REQUIRED",
+      "payment_source": "[REDACTED]",
+      "purchase_units": [
+        {
+          "reference_id": "97eb2381-ad81-4d10-a3de-f8636b7516b2",
+          "amount": {
+            "currency_code": "USD",
+            "value": "1.00",
+            "breakdown": {
+              "item_total": {
+                "currency_code": "USD",
+                "value": "1.00"
+              },
+              "shipping": {
+                "currency_code": "USD",
+                "value": "0.00"
+              },
+              "tax_total": {
+                "currency_code": "USD",
+                "value": "0.00"
+              }
+            }
+          },
+          "payee": {
+            "merchant_id": "535MGHZJ8PNVC"
+          },
+          "custom_id": "97eb2381-ad81-4d10-a3de-f8636b7516b2",
+          "items": [
+            {
+              "name": "[REDACTED]",
+              "unit_amount": {
+                "currency_code": "USD",
+                "value": "1.00"
+              },
+              "quantity": "1",
+              "category": "PHYSICAL_GOODS"
+            }
+          ]
+        }
+      ],
+      "create_time": "2026-10-27T12:30:59Z",
+      "links": [
+        {
+          "href": "https://api.sandbox.paypal.com/v2/checkout/orders/7N7760476B844150C",
+          "rel": "self",
+          "method": "GET"
+        },
+        {
+          "href": "https://www.sandbox.paypal.com/checkoutnow?token=7N7760476B844150C",
+          "rel": "payer-action",
+          "method": "GET"
+        }
+      ]
+    }
+  },
+  {
+    "at": "2026-10-27T12:32:02.562Z",
+    "operation": "read-final-order",
+    "method": "GET",
+    "route": "/v2/checkout/orders/7N7760476B844150C",
+    "http": 200,
+    "debugId": "ca511b8a519d1",
+    "response": {
+      "id": "7N7760476B844150C",
+      "intent": "AUTHORIZE",
+      "status": "PAYER_ACTION_REQUIRED",
+      "payment_source": "[REDACTED]",
+      "purchase_units": [
+        {
+          "reference_id": "97eb2381-ad81-4d10-a3de-f8636b7516b2",
+          "amount": {
+            "currency_code": "USD",
+            "value": "1.00",
+            "breakdown": {
+              "item_total": {
+                "currency_code": "USD",
+                "value": "1.00"
+              },
+              "shipping": {
+                "currency_code": "USD",
+                "value": "0.00"
+              },
+              "tax_total": {
+                "currency_code": "USD",
+                "value": "0.00"
+              }
+            }
+          },
+          "payee": {
+            "merchant_id": "535MGHZJ8PNVC"
+          },
+          "custom_id": "97eb2381-ad81-4d10-a3de-f8636b7516b2",
+          "items": [
+            {
+              "name": "[REDACTED]",
+              "unit_amount": {
+                "currency_code": "USD",
+                "value": "1.00"
+              },
+              "quantity": "1",
+              "category": "PHYSICAL_GOODS"
+            }
+          ]
+        }
+      ],
+      "create_time": "2026-10-27T12:30:59Z",
+      "links": [
+        {
+          "href": "https://api.sandbox.paypal.com/v2/checkout/orders/7N7760476B844150C",
+          "rel": "self",
+          "method": "GET"
+        },
+        {
+          "href": "https://www.sandbox.paypal.com/checkoutnow?token=7N7760476B844150C",
+          "rel": "payer-action",
+          "method": "GET"
+        }
+      ]
+    }
+  }
+]

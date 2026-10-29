@@ -1,0 +1,42 @@
+{
+  "at": "2026-10-27T13:39:12.496Z",
+  "checks": {
+    "lint": "PASS",
+    "typecheck": "PASS",
+    "backendBuild": "PASS",
+    "unitTests": {
+      "passed": 6,
+      "failed": 0
+    },
+    "realPostgresIntegration": {
+      "passed": 29,
+      "failed": 0
+    },
+    "productionDependencyAudit": {
+      "knownVulnerabilities": 0
+    },
+    "browserCallback": {
+      "url": "http://127.0.0.1:8766/return?token=callback-verification",
+      "result": "PASS",
+      "screenshot": "callback-verified.png"
+    },
+    "dockerCompose": "NOT_RUN_NO_DOCKER",
+    "liveLedgerPayPal": "NOT_RUN",
+    "realSignedWebhooks": "NOT_RUN"
+  },
+  "sourceSHA256": {
+    "src/engine.ts": "50a69c0cec8b0263319f7226268a7c5ed8c0a3e3df03c71919c158f693223f2f",
+    "src/policy.ts": "4a8e75bc4af15a342c9425fabd193be484c2b10f3a0fd5ddd95181141d044358",
+    "src/paypal.ts": "89b651b94122efb1a3b384225d1c1761b1d572ce11a1455f5cc2d7b167481af0",
+    "src/session.ts": "ab2c5892945684a1d8164bcda39efc4db98afefd7b1c863eda0d8ee157b09bdb",
+    "src/worker.ts": "309f8e277e9e7b0ec5a5388f5d5a973b3eb1b35b888e0341d7b4c9ef3f268eec",
+    "src/webhooks.ts": "3fe21ba8333b77ea414588c4186bfd711b6d641b922c89e9da6fa2e76cf47011",
+    "src/callback.ts": "f2e01aa7cbdeb8cd81ae9321281ffad632aa372f57957af1833f94a36abac106",
+    "migrations/001_core.sql": "14377a4f7b69de0713582df3a220022319d87190df54c03e8b352215415da506",
+    "scripts/integration.ts": "c9a75ed2aea8b8870adb683b3a4f74219227782d50ff993ee32c0dca3f060b49",
+    "scripts/local-postgres.ts": "c3121ff7d41317c6c88c9ad7e2009cfe9b3109cc6e2ded94303f064ad8ea6f21",
+    "scripts/migrate.ts": "a0336ad89968e62734afd012cc3457f8ab491418974baafad7c1abcb017fa708",
+    "scripts/recover.ts": "9a47ac56822daf2599e23354682b95afba91e1332c5e962452d46d3c12f5ccdf",
+    "package-lock.json": "0a09863bebaff6909ea0719e461acf6439e008c4d656ca828212963aedff3ff9"
+  }
+}

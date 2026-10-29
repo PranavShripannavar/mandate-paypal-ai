@@ -1,0 +1,42 @@
+
+> mandate@0.1.0 test:postgres
+> tsx scripts/local-postgres.ts
+
+REAL DATABASE: PostgreSQL 18.4 on x86_64-windows, compiled by msvc-19.44.35226, 64-bit
+✔ 24 simultaneous $40 reservations against $60 permit exactly one (658.927ms)
+✔ 20 concurrent $5 reservations fill exactly $60 without overdraw (114.2274ms)
+✔ same logical request concurrently produces one reservation and approval (47.5263ms)
+✔ forbidden category, recurring and merchant blocked before gateway or reservation (16.5888ms)
+✔ extra human review cannot override hard limits (14.3153ms)
+✔ capture converts held to spent exactly once; duplicate execution makes one mocked call (105.1148ms)
+✔ owner isolation on read/reserve/revoke/replace/execute/disable/reconcile (12.6203ms)
+✔ expiry before remote operation releases atomically once (33.4799ms)
+✔ cancelled order retains budget until authoritative no-hold read (27.1389ms)
+✔ late buyer approval after expiry never authorizes (21.5926ms)
+✔ expiry racing with authorization retains budget until confirmed void (38.1283ms)
+✔ revoked authorization blocks capture and worker performs mocked real-interface void (118.8378ms)
+✔ revocation racing with already claimed capture records spending honestly (33.3925ms)
+✔ capture and void cannot execute concurrently locally (34.3702ms)
+✔ lost capture response retains budget and restart reconciliation spends once (44.3948ms)
+✔ unknown authorization plus empty remote order cannot release on cancellation (31.643ms)
+✔ lost create response preserves reservation without recreating order (17.2322ms)
+✔ separate recovery process marks expired execution lease UNKNOWN without replay (387.2999ms)
+✔ catalog mutation after approval fails closed (9.8241ms)
+✔ policy versions immutable and replacement disables approvals without releasing remote holds (50.3777ms)
+✔ remote amount mismatch remains unresolved with budget held (13.3081ms)
+✔ database uniqueness prevents duplicate remote capture IDs and ledger entries (77.673ms)
+✔ expired policies and out-of-period policies cannot reserve even with human review (13.1651ms)
+✔ untrusted currency and changed approval basket cannot reach payment calls (13.1916ms)
+✔ invalid and temporarily unverifiable webhooks do not enter trusted inbox (4.0625ms)
+✔ duplicate, unknown and out-of-order webhooks cannot fabricate/regress payment (43.2078ms)
+✔ callback return responds promptly, escapes no query data and never establishes success (19.6593ms)
+✔ migration and seed runner can be applied twice without resetting records (633.7269ms)
+✔ ledger balances reconcile to counters for every integration fixture (4.5753ms)
+ℹ tests 29
+ℹ suites 0
+ℹ pass 29
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2662.4384

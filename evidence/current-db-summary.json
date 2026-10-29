@@ -1,0 +1,8 @@
+{
+  "at": "2026-10-29T12:15:12.950Z",
+  "serverVersion": "PostgreSQL 18.4 on x86_64-windows, compiled by msvc-19.44.35226, 64-bit",
+  "schema": "test_f832ce522f5848e2926ae9185eb4d94c",
+  "mockedProviders": true,
+  "ledgerInvariant": "PASS",
+  "mandates": "33"
+}
