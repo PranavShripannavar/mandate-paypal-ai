@@ -152,3 +152,11 @@ Owner authorized creation of US sandbox fixtures and accepted the Developer Agre
 - Refreshed temporary HTTPS tunnel and sandbox webhook registration; preserved both registration records. Temporary endpoint is not a final deployment. No paid commitment was made.
 - Pushed commit51 for live verification tooling; additional durable-hold work is being committed separately. Initial 50 commits remain intact.
 - Pushed durable-hold commit52 fb87a1d. Final existing-order check at12:47:45UTC still ORDER_CREATED with no authorization/capture. Application approval expired at12:45:59UTC (18:15:59IST). Do not ask buyer to approve this expired permission, extend it, or create another checkout without renewed owner authorization. Live revoke/void remains open.
+
+## Authorized replacement preparation — 2026-10-29
+
+- Owner authorized replacing only the expired uncharged void-test order if necessary, after making the old permission non-executable; no capture or live payment authorized.
+- Reconciled order2RL11757V75590309 through PayPal: no authorization/capture. Disabled its application permission as EXPIRED; verified AUTHORIZE and CAPTURE both reject EXPIRED. Authoritative no-hold reconciliation released500 exactly once. Old mandate now6000available/0reserved/0spent. Added EXPIRED_TEST_RETIRED audit event. Existing capture77U17875SJ4927124 remains CAPTURED/SPENT.
+- No safe reapproval-in-place API exists; immutable consumed permission is preserved. One replacement remains authorized but has NOT been created while buyer login setup is blocked.
+- Browser automatic approval review rejected Developer Dashboard navigation because it redirected to production www.paypal.com, outside sandbox scope with potential real-account exposure. Did not bypass via alternate surface/API. Owner takeover is needed to obtain buyer credentials privately and perform sandbox login/approval. Do not print/store buyer password or create another checkout until owner is ready.
+- Updated redacted live-ledger evidence. Typecheck and lint passed after retirement tooling change. Live authorize/revoke/void remains open.

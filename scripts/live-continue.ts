@@ -9,6 +9,17 @@ try{
  const order=process.argv[2];const mode=process.argv[3]??'inspect';
  const purchase=(await db.query('SELECT * FROM purchases WHERE order_id=$1',[order])).rows[0];if(!purchase)throw new Error('Existing local order not found');
  const service=engine(db);let p=await service.reconcile(purchase.owner_id,purchase.id,true);
+ if(mode==='retire-expired'){
+   if(p.authorization_id||p.capture_id)throw new Error('Retirement requires authoritative reconciliation with no authorization or capture');
+   await service.disable(p.owner_id,p.id,'EXPIRED');
+   for(const kind of ['AUTHORIZE','CAPTURE'] as const){
+     let reason='';try{await service.execute(p.owner_id,p.id,kind);}catch(e){reason=e instanceof Error?e.message:'UNKNOWN';}
+     if(reason!=='EXPIRED')throw new Error('Expired execution block not confirmed for '+kind);
+   }
+   p=await service.reconcile(p.owner_id,p.id,true);
+   if(p.reservation!=='RELEASED')throw new Error('Retirement remains unresolved; replacement forbidden');
+   await db.query("INSERT INTO audit(owner_id,mandate_id,purchase_id,actor,event,details) VALUES($1,$2,$3,'system','EXPIRED_TEST_RETIRED',$4)",[p.owner_id,p.mandate_id,p.id,JSON.stringify({orderId:p.order_id,authorizeBlocked:true,captureBlocked:true,replacementAuthorized:true})]);
+ }
  if(['capture','hold'].includes(mode)&&p.state==='BUYER_APPROVED')p=await service.execute(p.owner_id,p.id,'AUTHORIZE');
  if(mode==='capture'&&p.state==='AUTHORIZED')p=await service.execute(p.owner_id,p.id,'CAPTURE');
  if(mode==='revoke'){
