@@ -141,3 +141,13 @@ Owner authorized creation of US sandbox fixtures and accepted the Developer Agre
 - Organized existing work into 49 scoped nonempty commits plus this final documentation record (50 total). These commits package work performed earlier in this chat; they are not a fabricated historical timeline. Intermediate assembly commits are not claimed independently runnable; the final snapshot is the tested application.
 - Explicit paths were staged. Current PayPal credentials, Gemini key, local database password and session secret were scanned absent from candidate source/evidence. .env, work/, node_modules/, .next/, dist/ and TypeScript build caches remain ignored. No local database/binary/keyring files were pushed.
 - No deployment, new PayPal order, paid commitment, public push or change to an unrelated project was made for this Git request.
+
+## Owner-approved revoke/void verification — 2026-10-29
+
+- Owner approved one separate USD5 sandbox authorization/revoke/void test. Created order 2RL11757V75590309, purchase 71b66a86-2c5d-4764-967d-aa78fb25dc4e, under a fresh Atlas Workshop mandate. The earlier completed capture remains unchanged.
+- Latest authoritative reconciliation: ORDER_CREATED, reservation HELD500, no authorization or capture. Buyer login/approval remains pending in the existing PayPal tab. Do not create a replacement or extend approval silently.
+- Fixed hold-before-capture persistence: migration004, backend CAPTURE guard, continuation guard and UI request/state. Applied the durable hold to this existing order before handing off checkout. Export includes hold_before_capture. This test must never capture.
+- Native PostgreSQL18.4 regression: 30 tests passed, including service reconstruction with a durable hold and rejection after revocation. Typecheck and lint passed. Live revoke/void is still unverified until buyer approval and authoritative authorization/void reads succeed.
+- Production webpack build passed (`npx next build --webpack`). Default Turbopack build currently fails in the CSS subprocess before connection, including outside sandbox; retain this tooling gap instead of claiming the default build passed.
+- Refreshed temporary HTTPS tunnel and sandbox webhook registration; preserved both registration records. Temporary endpoint is not a final deployment. No paid commitment was made.
+- Pushed commit51 for live verification tooling; additional durable-hold work is being committed separately. Initial 50 commits remain intact.

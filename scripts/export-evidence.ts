@@ -4,7 +4,7 @@ try{process.loadEnvFile('.env');}catch{/* optional scan variables */}
 const config=JSON.parse(readFileSync('work/dev-config.json','utf8'));
 const db=new Pool({connectionString:`postgresql://mandate:${config.password}@127.0.0.1:55440/mandate`});
 try{
- const purchases=(await db.query('SELECT id,owner_id,mandate_id,version,total_cents,currency,merchant_id,state,reservation,order_id,authorization_id,capture_id,disabled_at,disable_reason,approval_expires FROM purchases WHERE order_id IS NOT NULL ORDER BY created_at')).rows;
+ const purchases=(await db.query('SELECT id,owner_id,mandate_id,version,total_cents,currency,merchant_id,state,reservation,order_id,authorization_id,capture_id,disabled_at,disable_reason,approval_expires,hold_before_capture FROM purchases WHERE order_id IS NOT NULL ORDER BY created_at')).rows;
  const ids=purchases.map(p=>p.id);
  const operations=(await db.query('SELECT purchase_id,kind,request_id,payload_hash,outcome,started_at,finished_at,error_code,remote_id FROM operations WHERE purchase_id=ANY($1::uuid[]) ORDER BY started_at',[ids])).rows;
  const ledger=(await db.query('SELECT * FROM ledger WHERE purchase_id=ANY($1::uuid[]) ORDER BY id',[ids])).rows;

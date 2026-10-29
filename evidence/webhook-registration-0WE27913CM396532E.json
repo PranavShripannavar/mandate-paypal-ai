@@ -1,0 +1,35 @@
+{
+  "at": "2026-10-27T14:16:06.645Z",
+  "environment": "sandbox",
+  "id": "0WE27913CM396532E",
+  "url": "https://answered-oem-obtained-storage.trycloudflare.com/api/paypal/webhook",
+  "event_types": [
+    {
+      "name": "CHECKOUT.ORDER.APPROVED",
+      "description": "An order has been approved by buyer."
+    },
+    {
+      "name": "PAYMENT.AUTHORIZATION.CREATED",
+      "description": "A payment authorization is created, approved, executed, or a future payment authorization is created."
+    },
+    {
+      "name": "PAYMENT.AUTHORIZATION.VOIDED",
+      "description": "A payment authorization is voided."
+    },
+    {
+      "name": "PAYMENT.CAPTURE.COMPLETED",
+      "description": "A payment capture completes."
+    },
+    {
+      "name": "PAYMENT.CAPTURE.PENDING",
+      "description": "The state of a payment capture changes to pending."
+    },
+    {
+      "name": "PAYMENT.CAPTURE.DENIED",
+      "description": "A payment capture is denied."
+    }
+  ],
+  "http": 201,
+  "debugId": "f758769bcafd6",
+  "verifiedTransactionSignatures": false
+}

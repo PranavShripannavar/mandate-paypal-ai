@@ -45,8 +45,10 @@ export async function POST(req:Request){
       }
       if(!process.env.PAYPAL_CLIENT_ID||!process.env.PAYPAL_CLIENT_SECRET)throw new DomainError('PAYPAL_UNAVAILABLE');
       const key=z.string().uuid().parse(input.key);const reviewed=z.boolean().parse(input.reviewed);
+      const hold=z.boolean().default(false).parse(input.hold);
       const result=await service.reserve(session.owner_id,session.mandate_id,key,items,reviewed);
       if(!result.purchase)return Response.json(result);
+      if(hold)await pool.query("UPDATE purchases SET hold_before_capture=true WHERE id=$1 AND owner_id=$2 AND state='APPROVED'",[result.purchase.id,session.owner_id]);
       const existing=(await pool.query("SELECT 1 FROM operations WHERE purchase_id=$1 AND kind='CREATE'",[result.purchase.id])).rowCount;
       if(!existing){await consume(pool,'global','paymentOrders',20);await consume(pool,session.id,'paymentOrders',5);}
       const purchase=await service.execute(session.owner_id,result.purchase.id,'CREATE');
@@ -76,7 +78,7 @@ export async function POST(req:Request){
       await consume(pool,session.id,'statusChecks',30);
       purchase=await service.reconcile(session.owner_id,purchaseId,true);
       if(purchase.state==='BUYER_APPROVED')purchase=await service.execute(session.owner_id,purchaseId,'AUTHORIZE');
-      if(purchase.state==='AUTHORIZED'&&!hold)purchase=await service.execute(session.owner_id,purchaseId,'CAPTURE');
+      if(purchase.state==='AUTHORIZED'&&!hold&&!purchase.hold_before_capture)purchase=await service.execute(session.owner_id,purchaseId,'CAPTURE');
       return Response.json({purchase});
     }
     if(action==='capture')return Response.json({purchase:await service.execute(session.owner_id,purchaseId,'CAPTURE')});

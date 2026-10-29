@@ -5,7 +5,7 @@ import { canonicalBasket, decide, DomainError, PolicySchema, type Basket, type P
 
 export type Kind='CREATE'|'AUTHORIZE'|'CAPTURE'|'VOID';
 export type Snapshot={orderId:string;merchantId:string;currency:string;totalCents:number;buyerApproved:boolean;authorizationId?:string;authorizationStatus?:'CREATED'|'VOIDED'|'EXPIRED'|'CAPTURED';captureId?:string;captureStatus?:'COMPLETED'|'PENDING'|'DECLINED'};
-export type Purchase={id:string;owner_id:string;mandate_id:string;version:number;logical_key:string;basket:Basket;basket_hash:string;total_cents:number;currency:string;merchant_id:string;state:string;approval_id:string;approval_expires:Date;approval_consumed:boolean;disabled_at:Date|null;disable_reason:string|null;reservation:'HELD'|'SPENT'|'RELEASED';order_id:string|null;authorization_id:string|null;capture_id:string|null};
+export type Purchase={id:string;owner_id:string;mandate_id:string;version:number;logical_key:string;basket:Basket;basket_hash:string;total_cents:number;currency:string;merchant_id:string;state:string;approval_id:string;approval_expires:Date;approval_consumed:boolean;disabled_at:Date|null;disable_reason:string|null;reservation:'HELD'|'SPENT'|'RELEASED';order_id:string|null;authorization_id:string|null;capture_id:string|null;hold_before_capture:boolean};
 export interface Gateway {
   /** Implementations must return authoritative order/payment reads, not browser callback facts. */
   perform(kind:Kind,purchase:Purchase,requestId:string):Promise<Snapshot>;
@@ -93,6 +93,7 @@ export class Engine {
       if((await c.query("SELECT 1 FROM operations WHERE purchase_id=$1 AND outcome IN ('RUNNING','UNKNOWN')",[id])).rowCount)fail('OPERATION_UNRESOLVED');
       if(kind!=='VOID')await this.validate(c,m,p);
       else if(!p.authorization_id||p.capture_id||p.reservation!=='HELD')fail('NOT_VOIDABLE');
+      if(kind==='CAPTURE'&&p.hold_before_capture)fail('HOLD_BEFORE_CAPTURE');
       const states:Record<Kind,string[]>={CREATE:['APPROVED'],AUTHORIZE:['BUYER_APPROVED'],CAPTURE:['AUTHORIZED'],VOID:['AUTHORIZED','RECONCILING']};
       if(!states[kind].includes(p.state))fail('INVALID_STATE');
       if(kind==='CREATE'&&p.approval_consumed)fail('APPROVAL_USED');

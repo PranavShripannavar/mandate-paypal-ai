@@ -13,6 +13,7 @@ try{
     if(!(await c.query('SELECT 1 FROM schema_migrations WHERE version=1')).rowCount){await c.query(readFileSync('migrations/001_core.sql','utf8'));await c.query('INSERT INTO schema_migrations(version) VALUES(1)');}
     if(!(await c.query('SELECT 1 FROM schema_migrations WHERE version=2')).rowCount){await c.query(readFileSync('migrations/002_app.sql','utf8'));await c.query('INSERT INTO schema_migrations(version) VALUES(2)');}
     if(!(await c.query('SELECT 1 FROM schema_migrations WHERE version=3')).rowCount){await c.query(readFileSync('migrations/003_evidence.sql','utf8'));await c.query('INSERT INTO schema_migrations(version) VALUES(3)');}
+    if(!(await c.query('SELECT 1 FROM schema_migrations WHERE version=4')).rowCount){await c.query(readFileSync('migrations/004_hold.sql','utf8'));await c.query('INSERT INTO schema_migrations(version) VALUES(4)');}
   });
   await seed(db);console.log('Mandate migration 001 and demo catalog/owners ready.');
 }finally{await db.end();}
