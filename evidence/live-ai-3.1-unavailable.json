@@ -1,0 +1,23 @@
+{
+  "at": "2026-10-31T02:22:44.249Z",
+  "steps": [
+    {
+      "action": "session",
+      "http": 200,
+      "durationMs": 510,
+      "output": {
+        "ok": true
+      }
+    },
+    {
+      "action": "draft",
+      "http": 400,
+      "durationMs": 4818,
+      "output": {
+        "error": "AI_PROVIDER_503"
+      }
+    }
+  ],
+  "paymentCalls": 0,
+  "status": "FAIL"
+}
