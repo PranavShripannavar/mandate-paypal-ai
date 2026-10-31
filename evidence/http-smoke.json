@@ -1,5 +1,5 @@
 {
-  "at": "2026-10-27T14:17:56.148Z",
+  "at": "2026-10-31T02:29:08.737Z",
   "tests": "PASS",
   "realNativePostgreSQL": true,
   "paymentCalls": 0,
@@ -16,6 +16,26 @@
     {
       "action": "activate",
       "status": 200
+    },
+    {
+      "action": "evaluate",
+      "status": 200,
+      "decision": "BLOCK"
+    },
+    {
+      "action": "evaluate",
+      "status": 200,
+      "decision": "ALLOW"
+    },
+    {
+      "action": "evaluate",
+      "status": 200,
+      "decision": "REVIEW"
+    },
+    {
+      "action": "evaluate",
+      "status": 200,
+      "decision": "BLOCK"
     },
     {
       "action": "evaluate",

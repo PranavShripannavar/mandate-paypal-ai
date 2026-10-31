@@ -68,7 +68,7 @@ export async function POST(req:Request){
     if(action==='revoke'){
       const held=(await pool.query("SELECT id FROM purchases WHERE mandate_id=$1 AND owner_id=$2 AND state='AUTHORIZED' AND reservation='HELD'",[session.mandate_id,session.owner_id])).rows;
       await service.revoke(session.owner_id,session.mandate_id);
-      for(const p of held){try{await service.execute(session.owner_id,p.id,'CAPTURE');}catch(e){await pool.query("INSERT INTO audit(owner_id,mandate_id,purchase_id,actor,event,details) VALUES($1,$2,$3,$1,'CAPTURE_BLOCKED_AFTER_REVOCATION',$4)",[session.owner_id,session.mandate_id,p.id,JSON.stringify({reason:e instanceof DomainError?e.code:'ERROR'})]);}}
+      for(const p of held){try{await service.execute(session.owner_id,p.id,'CAPTURE');}catch(e){await pool.query("INSERT INTO audit(owner_id,mandate_id,purchase_id,actor,event,details) VALUES($1,$2,$3,$5,'CAPTURE_BLOCKED_AFTER_REVOCATION',$4)",[session.owner_id,session.mandate_id,p.id,JSON.stringify({reason:e instanceof DomainError?e.code:'ERROR'}),session.owner_id]);}}
       await sweep(service);return Response.json({ok:true});
     }
     const purchaseId=z.uuid().parse(input.purchaseId);let purchase=await service.get(session.owner_id,purchaseId);

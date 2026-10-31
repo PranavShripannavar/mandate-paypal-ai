@@ -9,7 +9,7 @@
     "test:integration": "tsx scripts/integration.ts",
     "test:postgres": "tsx scripts/local-postgres.ts",
     "callback": "tsx src/callback.ts",
-    "build": "next build",
+    "build": "next build --webpack",
     "lint": "eslint src tests scripts app",
     "db:migrate": "tsx scripts/migrate.ts",
     "dev": "tsx scripts/dev.ts",

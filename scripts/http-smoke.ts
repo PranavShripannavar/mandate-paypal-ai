@@ -8,6 +8,10 @@ const rejected=await post('session',{owner:0},'','https://untrusted.example');as
 const a=await post('session',{owner:0});assert.equal(a.r.status,200);const cookieA=a.r.headers.get('set-cookie')!.split(';')[0]!;
 let sa=await state(cookieA);assert.equal(sa.session.owner,0);await post('activate',{draftId:sa.draft.id},cookieA);sa=await state(cookieA);assert.ok(sa.mandate);
 const forbidden=await post('evaluate',{items:[{productId:'gift-card',quantity:1}]},cookieA);assert.equal(forbidden.output.decision.kind,'BLOCK');assert.ok(forbidden.output.decision.reasons.includes('CATEGORY_FORBIDDEN'));
+const valid=await post('evaluate',{items:[{productId:'pens',quantity:1}]},cookieA);assert.equal(valid.output.decision.kind,'ALLOW');
+const review=await post('evaluate',{items:[{productId:'injection',quantity:1}]},cookieA);assert.equal(review.output.decision.kind,'REVIEW');
+const recurring=await post('evaluate',{items:[{productId:'subscription',quantity:1}]},cookieA);assert.equal(recurring.output.decision.kind,'BLOCK');assert.ok(recurring.output.decision.reasons.includes('SUBSCRIPTION_FORBIDDEN'));
+const merchant=await post('evaluate',{items:[{productId:'other-store',quantity:1}]},cookieA);assert.equal(merchant.output.decision.kind,'BLOCK');assert.ok(merchant.output.decision.reasons.includes('MERCHANT_FORBIDDEN'));
 const split=await post('splitDemo',{},cookieA);assert.equal(split.output.first.decision,'ALLOW');assert.equal(split.output.second.decision,'BLOCK');sa=await state(cookieA);assert.equal(sa.mandate.reserved_cents,4000);assert.equal(sa.operations.length,0);
 const b=await post('session',{owner:1});const cookieB=b.r.headers.get('set-cookie')!.split(';')[0]!;const sb=await state(cookieB);await post('activate',{draftId:sb.draft.id},cookieB);
 const cross=await post('capture',{purchaseId:split.output.first.purchaseId},cookieB);assert.equal(cross.r.status,404);

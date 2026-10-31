@@ -19,5 +19,5 @@ try{
   if(!(await client.query("SELECT 1 FROM pg_database WHERE datname='mandate'")).rowCount)await client.query('CREATE DATABASE mandate');
   await client.end();
   if(await run(['--import','tsx','scripts/migrate.ts'])!==0)throw new Error('Migration failed');
-  process.exitCode=await run(['node_modules/next/dist/bin/next','dev','--hostname','127.0.0.1']);
+  process.exitCode=await run(['node_modules/next/dist/bin/next','dev','--webpack','--hostname','127.0.0.1']);
 }finally{await pg.stop();}
