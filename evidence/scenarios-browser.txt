@@ -1,0 +1,287 @@
+Browser tab: 10, Title: "Mandate — Agent spending, on your terms", URL: "http://127.0.0.1:3000/".
+1 AXWebArea Mandate — Agent spending, on your terms, URL: 127.0.0.1:3000/
+	2 container
+		3 link Description: Mandate home, Value: 127.0.0.1:3000/
+		4 container Main navigation
+			5 button Workspace
+			6 button Audit trail
+		7 text NS Northstar Studio
+		8 text Owner stays in control
+		9 text THE SPENDING CONTROL LAYER FOR AI AGENTS
+		10 heading Your agent can shop. Your rules move the money., Value: 1
+			11 text Your agent can shop.
+			12 text Your rules move the money.
+		13 container
+			14 text Give routine purchasing a little autonomy.
+			15 text Keep the budget, the boundaries, and the final say.
+		16 text Propose. Verify. Pay.
+		17 text AI plans. Backend enforces.
+		18 text PayPal handles buyer approval. PayPal sandbox  configured Gemini  configured Webhooks  configured Configuration is not proof of successful verification. {"first":{"decision":"ALLOW","purchaseId":"40c3de9d-2649-47be-a7a5-b4471cb0691a"},"second":{"decision":"BLOCK","reasons":["BUDGET_LIMIT"]},"note":"Application budget reservations only. No PayPal order, authorization or capture was called."}
+		37 heading Purchasing workspace, Value: 2
+			38 text Purchasing workspace
+		39 text Mandate v1 · Active
+		40 button Switch owner
+		41 button ↻ Fresh demo session
+		42 container Mandate budget
+			43 text Available to your agent
+			44 container
+				45 text $20.00  USD
+			46 container
+				47 text of  $60.00  fixed-period mandate
+			48 text Reserved
+			49 text $40.00
+			50 text Held for approved purchases
+			51 text Confirmed spent
+			52 text $0.00
+			53 text Authoritative captures only
+		54 text 01 · SET THE BOUNDARIES
+		55 heading Your spending mandate, Value: 3
+			56 text Your spending mandate
+		200 text Version 1
+		57 text Describe the rules in your own words
+		58 text entry area (settable) Describe the rules in your own words, ID: policy-input, Value: Use the default 7-day demo period. Spend at most $60 total on office supplies from Demo Office Store. Maximum $40 per order. No gift cards or subscriptions. Ask before purchases above $30.
+		59 button Draft with Gemini
+		60 text ACTIVE IMMUTABLE POLICY
+		61 text Total budget
+		62 text $60.00
+		63 text Per purchase
+		64 text $40.00
+		65 text Extra review above
+		66 text $30.00
+		67 text Merchant
+		68 text Demo Office Store
+		69 text Categories
+		70 text supplies
+		71 text Subscriptions
+		72 text Blocked
+		73 text Fixed period
+		74 container
+			75 text 10/31/2026, 7:57:07 AM  →  11/7/2026, 7:57:07 AM
+		76 text Expires
+		77 text 11/7/2026, 7:57:07 AM
+		79 text Only you can activate a policy. Extra review never overrides a hard limit.
+		80 text THE JUDGE’S SHORTCUT
+		81 heading Five ways to test the boundary, Value: 3
+			82 text Five ways to test the boundary
+		83 text Start a fresh demo for an untouched $60 budget.
+		84 button 01 A valid purchase
+			85 text 0
+			268 text 1
+			269 text A valid purchase
+		86 button 02 Prompt injection
+			87 text 0
+			270 text 2
+			271 text Prompt injection
+		88 button 03 Split spending
+			89 text 0
+			272 text 3
+			273 text Split spending
+		90 button 04 Duplicate execution
+			91 text 0
+			274 text 4
+			275 text Duplicate execution
+		92 button 05 Revoke before capture
+			93 text 0
+			276 text 5
+			277 text Revoke before capture
+		94 text 02 · GIVE YOUR AGENT A TASK
+		95 heading What needs restocking?, Value: 3
+			96 text What needs restocking?
+		97 container AI mode
+			98 checkbox Guided, Value: 0
+			99 checkbox Live Gemini, Value: 1
+		100 text Purchasing task
+		101 text field (settable) Purchasing task, Value: Buy one everyday pen set., ID: task
+		102 button Ask agent
+		103 text LIVE GEMINI · actual model output, never payment authority
+		104 text CONTROLLED CATALOG
+		105 heading Office essentials, with boundaries., Value: 3
+			106 text Office essentials, with boundaries.
+		107 text 12  Products
+		108 button ◇ DEMO OFFICE STORE Packing tape $3.00 +
+			109 text ◇
+			110 text DEMO OFFICE STORE
+			111 text Packing tape
+			112 text $3.00
+			278 text +
+		113 button /// DEMO OFFICE STORE Everyday pen set $5.00 ✓
+			114 text ///
+			115 text DEMO OFFICE STORE
+			116 text Everyday pen set
+			117 text $5.00
+			279 text ✓
+		118 button ◇ DEMO OFFICE STORE Document folders $8.00 +
+			119 text ◇
+			120 text DEMO OFFICE STORE
+			121 text Document folders
+			122 text $8.00
+			280 text +
+		123 button ◇ UNAPPROVED MERCHANT Paper · other merchant $10.00 +
+			124 text ◇
+			125 text UNAPPROVED MERCHANT
+			126 text Paper · other merchant
+			127 text $10.00
+			281 text +
+		128 button A4 DEMO OFFICE STORE Recycled copy paper $10.00 +
+			129 text A4
+			130 text DEMO OFFICE STORE
+			131 text Recycled copy paper
+			132 text $10.00
+			282 text +
+		133 button ◇ DEMO OFFICE STORE Monthly supply club $10.00 + Recurring metadata
+			134 text ◇
+			135 text DEMO OFFICE STORE
+			136 text Monthly supply club
+			137 text $10.00
+			283 text +
+			284 text Recurring metadata
+		138 button ◇ DEMO OFFICE STORE Shipping labels $12.00 +
+			139 text ◇
+			140 text DEMO OFFICE STORE
+			141 text Shipping labels
+			142 text $12.00
+			285 text +
+		143 button ≡ DEMO OFFICE STORE Studio notebooks $15.00 +
+			144 text ≡
+			145 text DEMO OFFICE STORE
+			146 text Studio notebooks
+			147 text $15.00
+			286 text +
+		148 button ◇ DEMO OFFICE STORE Desk stapler $20.00 +
+			149 text ◇
+			150 text DEMO OFFICE STORE
+			151 text Desk stapler
+			152 text $20.00
+			287 text +
+		153 button $ DEMO OFFICE STORE Digital gift card $40.00 + Gift-card category
+			154 text $
+			155 text DEMO OFFICE STORE
+			156 text Digital gift card
+			157 text $40.00
+			288 text +
+			289 text Gift-card category
+		158 button ! DEMO OFFICE STORE Agent trap · toner bundle $40.00 + Injection-bearing description
+			159 text !
+			160 text DEMO OFFICE STORE
+			161 text Agent trap · toner bundle
+			162 text $40.00
+			290 text +
+			291 text Injection-bearing description
+		163 button INK DEMO OFFICE STORE Printer toner $40.00 +
+			164 text INK
+			165 text DEMO OFFICE STORE
+			166 text Printer toner
+			167 text $40.00
+			292 text +
+		168 text 03 · VERIFY BEFORE MONEY MOVES
+		169 heading The approval desk, Value: 3
+			170 text The approval desk
+		171 text $5.00
+		263 text Everyday pen set
+		264 container
+			265 text Qty
+			266 stepper (settable, integer) Qty, Value: 1
+		267 text $5.00
+		175 text Tax  $0.00  · Shipping  $0.00  · USD only
+		176 button Evaluate policy
+		177 container
+			178 checkbox (settable, integer) Description: Hold before capture Demo: pause after real authorization to test revocation., Value: 0
+			179 text Hold before capture Demo: pause after real authorization to test revocation.
+		180 text Application approval reserves budget. PayPal buyer approval is a separate step. The agent never sees your PayPal password.
+		181 text THE PAYMENT RECEIPT, NOT A GUESS
+		182 heading Transaction timeline, Value: 3
+			183 text Transaction timeline
+		184 button Refresh status ↻
+		293 button $40.00 40c3de9d Approved
+			294 text $40.00
+			295 text 40c3de9d
+			296 text Approved
+		297 heading Approved, Value: 4
+			298 text Approved
+		299 text Budget  Held
+		300 definition list
+			301 container Order
+				302 text Order
+			303 text Not created
+			304 container Authorization
+				305 text Authorization
+			306 text Not authorized
+			307 container Capture
+				308 text Capture
+			309 text No confirmed capture
+			310 container Approval expires
+				311 text Approval expires
+			312 text 10/31/2026, 8:11:56 AM
+		313 button Verify buyer approval & complete
+			314 text Verify buyer approval &
+			315 text complete
+		316 button Cancel permission
+		317 button Reconcile
+		186 text ACTUAL ACTIONS · ACTUAL OUTPUTS
+		187 heading Agent activity, Value: 3
+			188 text Agent activity
+		189 text No Hidden Reasoning
+		190 button (collapsed) Inspect untrusted product description +, Secondary Actions: Expand
+			191 text Inspect untrusted product description
+			192 text +
+		318 container
+			319 button (expanded) Backend split-spending 8:01:56 AM −, Secondary Actions: Collapse
+				320 text Backend
+				321 text split-spending
+				322 text 8:01:56 AM
+				323 text −
+			324 text {
+  "note": "Application budget reservations only. No PayPal order, authorization or capture was called.",
+  "first": {
+    "decision": "ALLOW",
+    "purchaseId": "40c3de9d-2649-47be-a7a5-b4471cb0691a"
+  },
+  "second": {
+    "reasons": [
+      "BUDGET_LIMIT"
+    ],
+    "decision": "BLOCK"
+  }
+}
+		325 button (collapsed) Backend evaluate 8:01:14 AM +, Secondary Actions: Expand
+			326 text Backend
+			327 text evaluate
+			328 text 8:01:14 AM
+			329 text +
+		330 button (collapsed) Live Gemini propose 8:00:26 AM +, Secondary Actions: Expand
+			331 text Live Gemini
+			332 text propose
+			333 text 8:00:26 AM
+			334 text +
+		335 button (collapsed) Backend evaluate 8:00:22 AM +, Secondary Actions: Expand
+			336 text Backend
+			337 text evaluate
+			338 text 8:00:22 AM
+			339 text +
+		340 button (collapsed) Live Gemini explain 7:59:58 AM +, Secondary Actions: Expand
+			341 text Live Gemini
+			342 text explain
+			343 text 7:59:58 AM
+			344 text +
+		345 button (collapsed) Backend evaluate 7:59:26 AM +, Secondary Actions: Expand
+			346 text Backend
+			347 text evaluate
+			348 text 7:59:26 AM
+			349 text +
+		350 button (collapsed) Live Gemini propose 7:58:48 AM +, Secondary Actions: Expand
+			351 text Live Gemini
+			352 text propose
+			353 text 7:58:48 AM
+			354 text +
+		355 button (collapsed) Live Gemini draft 7:57:08 AM +, Secondary Actions: Expand
+			356 text Live Gemini
+			357 text draft
+			358 text 7:57:08 AM
+			359 text +
+		32 link Description: mandate PAYPAL AI PROTOTYPE, Value: 127.0.0.1:3000/
+		33 text AI proposes. Your rules decide.
+		34 text Sandbox funds only.
+	35 pop up button (collapsed) Description: Open Next.js Dev Tools, ID: next-logo, Secondary Actions: Expand
+		36 image
+
+The focused UI element is 1 AXWebArea Mandate — Agent spending, on your terms, URL: 127.0.0.1:3000/

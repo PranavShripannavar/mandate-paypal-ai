@@ -53,10 +53,16 @@ Owner approved the single replacement checkout8DE04494E0613414B for USD5.00. App
 
 The expired preceding test order2RL11757V75590309 remains disabled and RELEASED. Earlier capture5BK26228CM529704U remains CAPTURED/SPENT. No new order or capture was created after buyer approval. The signed transaction-webhook evidence above belongs to the earlier captured transaction; no signed void webhook is claimed for this run.
 
+## Live Gemini: VERIFIED LOCALLY 2026-10-31
+
+Gemini 3.5 Flash-Lite passed real structured policy drafting, catalog proposal and grounded explanation through the HTTP application and native PostgreSQL. The browser also displayed a real draft, proposal and explanation. The owner explicitly activated the reviewed policy; AI did not activate it. No PayPal calls occurred during these checks.
+
+The generic restocking prompt produced a USD125 basket; the backend correctly rejected PURCHASE_LIMIT and BUDGET_LIMIT. Gemini then explained that unchanged decision. In the injection-bearing catalog test, Gemini proposed ordinary toner rather than the injected gift card. A separately labeled adversarial gift-card proposal was rejected CATEGORY_FORBIDDEN. These observed outputs do not establish universal injection resistance.
+
+Current default is gemini-3.5-flash-lite. The prior3.1Flash-Lite request returned two high-demand503 responses; failure evidence is preserved in evidence/live-ai-3.1-unavailable.json. Successful full-flow evidence is in evidence/live-ai.json and browser evidence in evidence/live-ai-browser.txt. Both provider attempts count against bounded quotas; no billing setting was changed.
+
 ## Still open
 
-- Successful live Gemini draft/proposal/explanation. Key is configured and model listing works. Gemini 2.5 Flash returned 404 for new users; 3.8 Flash returned bounded 504 timeouts. Unsupported MINIMAL was corrected to documented LOW. A tiny 3.1 Flash-Lite probe returned 503 high demand. Failed calls are recorded honestly; guided proposals are visibly labeled replay.
-- Subsequent tiny 3.1 Flash-Lite JSON probe returned ready:true / finishReason STOP. Default switched to that responding stable model, but full policy drafting still returned503; task-level AI verification remains OPEN. Adapter retries503/504 at most once and charges both attempts against server-side usage counters.
-- Final hosted deployment and hosted PostgreSQL. Connected Vercel team Pranav exists, but connector omits billing plan and has no projects. Asked owner to confirm no-charge hosting and configure a dedicated hosted PostgreSQL connection. No paid commitment or deployment created.
+- Final hosted deployment and hosted PostgreSQL. Browser confirmed Pranav is on Hobby. Neon integration terms are awaiting owner acceptance before plan review; no database or deployment has been provisioned. No paid commitment was made.
 
 Raw redacted API/ledger/audit/signature evidence: evidence/live-ledger.json. Export checks that the current PayPal credentials, Gemini key and local database/session secrets are absent before writing it.

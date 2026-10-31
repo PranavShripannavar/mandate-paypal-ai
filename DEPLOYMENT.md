@@ -1,10 +1,10 @@
 # Deployment preparation
 
-Do not treat this file as evidence of deployment. No final hosting deployment has been created yet. Owner authorized deployment without charges; host plan and dedicated hosted database are unresolved.
+Do not treat this file as evidence of deployment. No final hosting deployment has been created yet. Owner authorized deployment without charges. The Vercel dashboard confirmed Hobby on31October2026; the dedicated hosted database remains unresolved.
 
 ## Intended target
 
-Connected Vercel team: Pranav / pranav-b7db / team_yxgP23j3ylo7nu1Xjh8Dhjl3. The connector returned no existing projects and omits billing-plan data. Owner was asked to confirm a no-charge Hobby account and a dedicated hosted PostgreSQL URL. Never read/reuse another project's environment secrets.
+Connected Vercel team: Pranav / pranav-b7db / team_yxgP23j3ylo7nu1Xjh8Dhjl3. The connector omits billing-plan data; the signed-in dashboard displays Hobby. Owner authorized inspecting and using only an explicitly USD0 Neon plan, without card, paid trial or overage billing. Setup currently requires owner acceptance of Marketplace/Neon terms before plan selection. Do not provision until the plan is visibly confirmed free. Never read/reuse another project's environment secrets.
 
 Local verification uses native PostgreSQL 18.4. Vercel Functions require a hosted reachable PostgreSQL database; the workspace's loopback database cannot be used by a hosted deployment. Provision only a confirmed free resource or obtain approval before a paid commitment. Do not expose local PostgreSQL over the public tunnel.
 
@@ -12,7 +12,7 @@ Local verification uses native PostgreSQL 18.4. Vercel Functions require a hoste
 
 1. Confirm the no-charge host/team and configure a purpose-created hosted DATABASE_URL privately. Prefer a nearby database region and pool-compatible connection. Do not weaken TLS verification.
 2. Generate a new SESSION_SECRET (32+ random bytes) and CRON_SECRET privately. Set APP_URL to the final HTTPS domain. Set PAYPAL_CLIENT_ID, PAYPAL_CLIENT_SECRET, PAYPAL_MERCHANT_ID, GEMINI_API_KEY and tested GEMINI_MODEL as sensitive server variables. Never prefix secrets NEXT_PUBLIC_. Keep sandbox-only API routing.
-3. Apply migrations 001–003 and seed with npm run db:migrate against that dedicated database. This preserves old records and creates the demo catalog/owners. Never migrate an unrelated database.
+3. Apply migrations 001–004 and seed with npm run db:migrate against that dedicated database. This preserves old records and creates the demo catalog/owners and durable capture hold. Never migrate an unrelated database.
 4. Run npm ci, npm run lint, npm run typecheck, npm test, npm run test:postgres and npm run build. Export current-source evidence separately from checkpoint history. Native database tests are explicitly approved; Docker is not needed.
 5. Upload an explicit allowlist of source/config/migrations/package-lock only. Exclude .env*, work/, node_modules/, .next/, dist/, local credentials, private database data and operational logs. Public repository push remains unauthorized.
 

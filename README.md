@@ -6,7 +6,7 @@
 
 The Next.js interface, Gemini adapter, signed demo sessions, deterministic policy engine, atomic PostgreSQL ledger, audit trail and five scenario controls are implemented. Real ledger-backed buyer approval → authorization → capture is verified for USD 5.00. Real transaction webhook signatures and duplicate execution are verified. See LIVE-VERIFICATION.md and evidence/live-ledger.json.
 
-This is still under development. Real authorize → revoke → void, successful Gemini policy/proposal/explanation, and final hosted deployment remain open. No simulated payment success is used. Checkpoint history is in CHECKPOINT-1.md, CHECKPOINT-2.md and PROGRESS.md.
+Real authorize → revoke → blocked capture → void and live Gemini policy/proposal/explanation are now verified locally. Final hosted deployment remains open. No simulated payment success is used. Checkpoint history is in CHECKPOINT-1.md, CHECKPOINT-2.md and PROGRESS.md.
 
 ## 60-second walkthrough
 
@@ -35,7 +35,7 @@ The worker performs bounded 20-second sweeps and retains ambiguous outcomes. Exp
 
 ## Gemini
 
-Set GEMINI_API_KEY privately. Default tested responding model: gemini-3.1-flash-lite. A tiny real JSON probe succeeded, but full drafting/proposal/explanation verification is still open because provider requests returned 503/504. Historical 2.5 Flash 404 is preserved. Never claim those failures are a successful model response. Override GEMINI_MODEL only with a currently supported model and matching thinking setting.
+Set GEMINI_API_KEY privately. Default verified model: gemini-3.5-flash-lite. Real policy drafting, catalog proposal and grounded explanation passed through HTTP and native PostgreSQL, then in the browser. Evidence is in evidence/live-ai.json and evidence/live-ai-browser.txt. Historical3.1high-demand503 and other provider failures remain recorded. An oversized model proposal was blocked by the backend; model output never grants payment authority. Override GEMINI_MODEL only with a currently supported model and matching thinking setting.
 
 The adapter uses strict schemas, 4,000-character input limits, bounded 2,500 output tokens, 45-second request timeouts, at most one 503/504 retry, twelve attempts per session and one hundred globally per day. Guided Replay is explicit and never simulates a payment.
 

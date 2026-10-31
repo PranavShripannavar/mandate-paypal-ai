@@ -24,10 +24,10 @@ Repeat the captured purchase's logical request. Show the same capture ID, one ca
 
 **1:55–2:25 — Revoke before capture**
 
-Use a separately owner-approved sandbox order with Hold before capture. Confirm real authorization, revoke the mandate, show backend capture rejection and the real void result. This recording segment remains pending until the separate order is authorized and the flow is actually verified. Do not present the unit-test mock as live void evidence.
+Show verified order8DE04494E0613414B with backend Hold before capture. Real authorization88N0380694842573V was revoked and capture rejected REVOKED before any remote capturePOST. PayPal confirmed VOIDED; ledger RESERVE500→RELEASE500. Use this real recorded evidence rather than creating another order for a walkthrough.
 
 **2:25–2:45 — Why the boundary holds**
 
 Show signature-verified transaction webhook records, stable operation IDs, owner-isolation tests and unresolved-outcome handling. “AI never sees payment credentials or decides whether money moves. This mandate is an application control, not a PayPal-native delegated-wallet permission. Standard buyer approval still applies.”
 
-Current recording gaps: successful live Gemini response, real revoke/void flow and final hosted URL. Keep them visible until closed.
+Live Gemini and real revoke/void evidence are available. Final hosted URL and recording remain open. The current development/build scripts use webpack after observed Turbopack failures.
