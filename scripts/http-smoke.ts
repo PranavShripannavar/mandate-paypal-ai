@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import {writeFileSync} from 'node:fs';
-const base='http://127.0.0.1:3000';
+const base=process.argv[2]??'http://127.0.0.1:3000';
+const evidenceFile=process.argv[3]??'evidence/http-smoke.json';
 const evidence:unknown[]=[];
 async function post(action:string,data:Record<string,unknown>={},cookie='',origin=base){const r=await fetch(base+'/api/action',{method:'POST',headers:{'Content-Type':'application/json',Origin:origin,Cookie:cookie},body:JSON.stringify({action,...data}),signal:AbortSignal.timeout(10000)});const output=await r.json();evidence.push({action,status:r.status,decision:output.decision?.kind??output.kind,error:output.error});return {r,output};}
 async function state(cookie:string){const r=await fetch(base+'/api/state',{headers:{Cookie:cookie}});assert.equal(r.status,200);return r.json();}
@@ -17,4 +18,5 @@ const b=await post('session',{owner:1});const cookieB=b.r.headers.get('set-cooki
 const cross=await post('capture',{purchaseId:split.output.first.purchaseId},cookieB);assert.equal(cross.r.status,404);
 const tampered=await post('revoke',{},cookieA+'x');assert.equal(tampered.r.status,401);
 const invalid=await post('evaluate',{items:[{productId:'paper',quantity:1,price:1}]},cookieA);assert.equal(invalid.r.status,400);
-writeFileSync('evidence/http-smoke.json',JSON.stringify({at:new Date().toISOString(),tests:'PASS',realNativePostgreSQL:true,paymentCalls:0,evidence},null,2));console.log('HTTP smoke PASS: real sessions, activation, forbidden/split decisions, owner isolation and origin/session/input tampering. No PayPal calls.');
+const cancelled=await post('cancel',{purchaseId:split.output.first.purchaseId},cookieA);assert.equal(cancelled.r.status,200);sa=await state(cookieA);assert.equal(sa.mandate.reserved_cents,0);assert.equal(sa.operations.length,0);
+writeFileSync(evidenceFile,JSON.stringify({at:new Date().toISOString(),base,tests:'PASS',realPostgreSQL:true,databaseEnvironment:base.includes('127.0.0.1')?'native-local':'hosted',paymentCalls:0,evidence},null,2));console.log('HTTP smoke PASS: real sessions, activation, forbidden/split decisions, owner isolation and origin/session/input tampering. No PayPal calls.');

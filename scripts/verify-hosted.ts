@@ -1,0 +1,11 @@
+import assert from 'node:assert/strict';
+import {readFileSync,writeFileSync} from 'node:fs';
+const base='https://mandate-paypal-ai.vercel.app';
+const evidence:unknown[]=[];
+async function request(path:string,init:RequestInit={}){const r=await fetch(base+path,{...init,signal:AbortSignal.timeout(30000),redirect:'manual'});return r;}
+const state=await request('/api/state');assert.equal(state.status,200);const config=await state.json();assert.equal(config.session,null);assert.ok(Object.values(config.connection).every(Boolean));evidence.push({check:'public configuration',http:state.status,connection:config.connection});
+for(const [path,expected] of [['/paypal/return?token=verification-only','returned'],['/paypal/cancel?token=verification-only','cancelled']] as const){const r=await request(path);assert.equal(r.status,303);assert.equal(r.headers.get('location'),base+'/?paypal='+expected);evidence.push({check:path,http:r.status,location:r.headers.get('location'),paymentMutation:false});}
+const denied=await request('/api/reconcile');assert.equal(denied.status,401);evidence.push({check:'unauthorized reconciliation rejected',http:denied.status});
+const unsigned=await request('/api/paypal/webhook',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({id:'unsigned-hosted-verification',event_type:'PAYMENT.CAPTURE.COMPLETED',resource:{id:'not-a-payment'}})});const rejected=await unsigned.json();assert.equal(unsigned.status,400);assert.equal(rejected.error,'INVALID_SIGNATURE');evidence.push({check:'unsigned transaction webhook rejected',http:unsigned.status,error:rejected.error});
+const privateConfig=JSON.parse(readFileSync('work/deploy-config.json','utf8'));const authorized=await request('/api/reconcile',{headers:{Authorization:'Bearer '+privateConfig.cronSecret}});assert.equal(authorized.status,200);evidence.push({check:'authorized reconciliation',http:authorized.status,result:await authorized.json()});
+writeFileSync('evidence/hosted-endpoints.json',JSON.stringify({at:new Date().toISOString(),base,status:'PASS',newPaymentOrders:0,signedTransactionWebhookVerified:false,evidence},null,2));console.log('Hosted endpoints PASS: public config, canonical callbacks, protected recovery and rejection of unsigned transaction webhooks. No payment created.');

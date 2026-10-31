@@ -3,6 +3,10 @@
 !.env.example
 node_modules/
 .next/
+.vercel/
 work/
 dist/
 *.tsbuildinfo
+
+.vercel
+.env*

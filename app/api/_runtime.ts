@@ -1,9 +1,9 @@
-import { Pool } from '../../src/db';
+import { Pool,databaseConnectionString } from '../../src/db';
 import { sessions } from '../../src/session';
 import { DomainError } from '../../src/policy';
 import type { DemoSession } from '../../src/app-service';
 const globalDB=globalThis as typeof globalThis&{mandatePool?:InstanceType<typeof Pool>};
-export function db(){if(!process.env.DATABASE_URL)throw new DomainError('DATABASE_UNAVAILABLE');return globalDB.mandatePool??=new Pool({connectionString:process.env.DATABASE_URL,max:8,connectionTimeoutMillis:5000,idleTimeoutMillis:10000});}
+export function db(){if(!process.env.DATABASE_URL)throw new DomainError('DATABASE_UNAVAILABLE');return globalDB.mandatePool??=new Pool({connectionString:databaseConnectionString(process.env.DATABASE_URL),max:8,connectionTimeoutMillis:5000,idleTimeoutMillis:10000});}
 export function signing(){return sessions(process.env.SESSION_SECRET??'');}
 export async function authenticated(req:Request){
   const token=req.headers.get('cookie')?.split('; ').find(x=>x.startsWith('mandate='))?.slice(8)??'';

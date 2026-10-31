@@ -1,9 +1,10 @@
 import assert from 'node:assert/strict';
 import {writeFileSync} from 'node:fs';
-const base='http://127.0.0.1:3000';
+const base=process.argv[2]??'http://127.0.0.1:3000';
+const evidenceFile=process.argv[3]??'evidence/live-ai.json';
 let cookie='';
 const evidence:{at:string;steps:unknown[];paymentCalls:number;status:string}={at:new Date().toISOString(),steps:[],paymentCalls:0,status:'RUNNING'};
-const save=()=>writeFileSync('evidence/live-ai.json',JSON.stringify(evidence,null,2));
+const save=()=>writeFileSync(evidenceFile,JSON.stringify({...evidence,base},null,2));
 async function post(action:string,data:Record<string,unknown>={}){
  const started=Date.now();const r=await fetch(base+'/api/action',{method:'POST',headers:{Origin:base,'Content-Type':'application/json',Cookie:cookie},body:JSON.stringify({action,...data}),signal:AbortSignal.timeout(110000)});
  if(action==='session')cookie=r.headers.get('set-cookie')?.split(';')[0]??'';

@@ -1,11 +1,14 @@
 import { readFileSync } from 'node:fs';
-import { Pool, transaction } from '../src/db';
+import { Pool, transaction,databaseConnectionString } from '../src/db';
 import { seed } from '../src/seed';
 try{process.loadEnvFile('.env');}catch{/* process environment may provide configuration */}
-if(!process.env.DATABASE_URL)throw new Error('DATABASE_URL required');
+const connectionString=process.env.DATABASE_URL_UNPOOLED??process.env.DATABASE_URL;
+if(!connectionString)throw new Error('DATABASE_URL required');
 const schema=process.env.DATABASE_SCHEMA??'public';
 if(!/^[a-z][a-z0-9_]*$/.test(schema))throw new Error('Invalid schema');
-const db=new Pool({connectionString:process.env.DATABASE_URL,options:`-c search_path=${schema},public`});
+// Transaction poolers reject startup search_path. Use the dedicated direct URL for
+// migrations when supplied, and rely on PostgreSQL's default path for public.
+const db=new Pool({connectionString:databaseConnectionString(connectionString),...(schema==='public'?{}:{options:`-c search_path=${schema},public`})});
 try{
   await transaction(db,async c=>{
     await c.query("SELECT pg_advisory_xact_lock(hashtext('mandate-migrations'))");
@@ -15,5 +18,5 @@ try{
     if(!(await c.query('SELECT 1 FROM schema_migrations WHERE version=3')).rowCount){await c.query(readFileSync('migrations/003_evidence.sql','utf8'));await c.query('INSERT INTO schema_migrations(version) VALUES(3)');}
     if(!(await c.query('SELECT 1 FROM schema_migrations WHERE version=4')).rowCount){await c.query(readFileSync('migrations/004_hold.sql','utf8'));await c.query('INSERT INTO schema_migrations(version) VALUES(4)');}
   });
-  await seed(db);console.log('Mandate migration 001 and demo catalog/owners ready.');
+  await seed(db);console.log('Mandate migrations 001–004 and demo catalog/owners ready.');
 }finally{await db.end();}
