@@ -1,0 +1,252 @@
+Browser tab: 13, Title: "Mandate — Agent spending, on your terms", URL: "https://mandate-paypal-ai.vercel.app/".
+0 AXWebArea Mandate — Agent spending, on your terms, URL: mandate-paypal-ai.vercel.app/
+	1 container
+		2 link Description: Mandate home, Value: mandate-paypal-ai.vercel.app/
+		3 container Main navigation
+			4 button Workspace
+			5 button Audit trail
+		6 text NS Northstar Studio
+		7 text Owner stays in control
+		8 text THE SPENDING CONTROL LAYER FOR AI AGENTS
+		9 heading Your agent can shop. Your rules move the money., Value: 1
+			10 text Your agent can shop.
+			11 text Your rules move the money.
+		12 container
+			13 text Give routine purchasing a little autonomy.
+			14 text Keep the budget, the boundaries, and the final say.
+		15 text Propose. Verify. Pay.
+		16 text AI plans. Backend enforces.
+		17 text PayPal handles buyer approval. PayPal sandbox  configured Gemini  configured Webhooks  configured Configuration is not proof of successful verification.
+		34 heading Purchasing workspace, Value: 2
+			35 text Purchasing workspace
+		36 text Mandate v1 · Active
+		37 button Switch owner
+		38 button ↻ Fresh demo session
+		39 container Mandate budget
+			40 text Available to your agent
+			41 container
+				42 text $60.00  USD
+			43 container
+				44 text of  $60.00  fixed-period mandate
+			45 text Reserved
+			46 text $0.00
+			47 text Held for approved purchases
+			48 text Confirmed spent
+			49 text $0.00
+			50 text Authoritative captures only
+		51 text 01 · SET THE BOUNDARIES
+		52 heading Your spending mandate, Value: 3
+			53 text Your spending mandate
+		197 text Version 1
+		54 text Describe the rules in your own words
+		55 text entry area (settable) Describe the rules in your own words, ID: policy-input, Value: Use the default 7-day demo period. Spend at most $60 total on office supplies from Demo Office Store. Maximum $40 per order. No gift cards or subscriptions. Ask before purchases above $30.
+		56 button Draft with Gemini
+		57 text ACTIVE IMMUTABLE POLICY
+		58 text Total budget
+		59 text $60.00
+		60 text Per purchase
+		61 text $40.00
+		62 text Extra review above
+		63 text $30.00
+		64 text Merchant
+		65 text Demo Office Store
+		66 text Categories
+		67 text supplies
+		68 text Subscriptions
+		69 text Blocked
+		70 text Fixed period
+		71 container
+			72 text 10/31/2026, 2:37:28 PM  →  11/7/2026, 2:37:28 PM
+		73 text Expires
+		74 text 11/7/2026, 2:37:28 PM
+		76 text Only you can activate a policy. Extra review never overrides a hard limit.
+		77 text THE JUDGE’S SHORTCUT
+		78 heading Five ways to test the boundary, Value: 3
+			79 text Five ways to test the boundary
+		80 text Start a fresh demo for an untouched $60 budget.
+		81 button 01 A valid purchase
+			82 text 0
+			228 text 1
+			229 text A valid purchase
+		83 button 02 Prompt injection
+			84 text 0
+			230 text 2
+			231 text Prompt injection
+		85 button 03 Split spending
+			86 text 0
+			232 text 3
+			233 text Split spending
+		87 button 04 Duplicate execution
+			88 text 0
+			234 text 4
+			235 text Duplicate execution
+		89 button 05 Revoke before capture
+			90 text 0
+			236 text 5
+			237 text Revoke before capture
+		91 text 02 · GIVE YOUR AGENT A TASK
+		92 heading What needs restocking?, Value: 3
+			93 text What needs restocking?
+		94 container AI mode
+			95 checkbox Guided, Value: 0
+			96 checkbox Live Gemini, Value: 1
+		97 text Purchasing task
+		98 text field (settable) Purchasing task, Value: Propose exactly one everyday pen set, productId pens, quantity 1. Do not approve or buy it., ID: task
+		99 button Ask agent
+		100 text LIVE GEMINI · actual model output, never payment authority
+		101 text CONTROLLED CATALOG
+		102 heading Office essentials, with boundaries., Value: 3
+			103 text Office essentials, with boundaries.
+		104 text 12  Products
+		105 button ◇ DEMO OFFICE STORE Packing tape $3.00 +
+			106 text ◇
+			107 text DEMO OFFICE STORE
+			108 text Packing tape
+			109 text $3.00
+			238 text +
+		110 button /// DEMO OFFICE STORE Everyday pen set $5.00 ✓
+			111 text ///
+			112 text DEMO OFFICE STORE
+			113 text Everyday pen set
+			114 text $5.00
+			239 text ✓
+		115 button ◇ DEMO OFFICE STORE Document folders $8.00 +
+			116 text ◇
+			117 text DEMO OFFICE STORE
+			118 text Document folders
+			119 text $8.00
+			240 text +
+		120 button ◇ UNAPPROVED MERCHANT Paper · other merchant $10.00 +
+			121 text ◇
+			122 text UNAPPROVED MERCHANT
+			123 text Paper · other merchant
+			124 text $10.00
+			241 text +
+		125 button A4 DEMO OFFICE STORE Recycled copy paper $10.00 +
+			126 text A4
+			127 text DEMO OFFICE STORE
+			128 text Recycled copy paper
+			129 text $10.00
+			242 text +
+		130 button ◇ DEMO OFFICE STORE Monthly supply club $10.00 + Recurring metadata
+			131 text ◇
+			132 text DEMO OFFICE STORE
+			133 text Monthly supply club
+			134 text $10.00
+			243 text +
+			244 text Recurring metadata
+		135 button ◇ DEMO OFFICE STORE Shipping labels $12.00 +
+			136 text ◇
+			137 text DEMO OFFICE STORE
+			138 text Shipping labels
+			139 text $12.00
+			245 text +
+		140 button ≡ DEMO OFFICE STORE Studio notebooks $15.00 +
+			141 text ≡
+			142 text DEMO OFFICE STORE
+			143 text Studio notebooks
+			144 text $15.00
+			246 text +
+		145 button ◇ DEMO OFFICE STORE Desk stapler $20.00 +
+			146 text ◇
+			147 text DEMO OFFICE STORE
+			148 text Desk stapler
+			149 text $20.00
+			247 text +
+		150 button $ DEMO OFFICE STORE Digital gift card $40.00 + Gift-card category
+			151 text $
+			152 text DEMO OFFICE STORE
+			153 text Digital gift card
+			154 text $40.00
+			248 text +
+			249 text Gift-card category
+		155 button ! DEMO OFFICE STORE Agent trap · toner bundle $40.00 + Injection-bearing description
+			156 text !
+			157 text DEMO OFFICE STORE
+			158 text Agent trap · toner bundle
+			159 text $40.00
+			250 text +
+			251 text Injection-bearing description
+		160 button INK DEMO OFFICE STORE Printer toner $40.00 +
+			161 text INK
+			162 text DEMO OFFICE STORE
+			163 text Printer toner
+			164 text $40.00
+			252 text +
+		165 text 03 · VERIFY BEFORE MONEY MOVES
+		166 heading The approval desk, Value: 3
+			167 text The approval desk
+		168 text $5.00
+		223 text Everyday pen set
+		224 container
+			225 text Qty
+			226 stepper (settable, integer) Qty, Value: 1
+		227 text $5.00
+		172 text Tax  $0.00  · Shipping  $0.00  · USD only
+		173 button Evaluate policy
+		253 text Within your mandate
+		254 text Trusted catalog facts and deterministic checks passed.
+		255 text Basket  81155e9c8b8c6d61  · no payment call during evaluation
+		256 button Approve purchase
+		257 button Explain this backend result with Gemini
+		174 container
+			175 checkbox (settable, integer) Description: Hold before capture Demo: pause after real authorization to test revocation., Value: 0
+			176 text Hold before capture Demo: pause after real authorization to test revocation.
+		177 text Application approval reserves budget. PayPal buyer approval is a separate step. The agent never sees your PayPal password.
+		178 text THE PAYMENT RECEIPT, NOT A GUESS
+		179 heading Transaction timeline, Value: 3
+			180 text Transaction timeline
+		181 button Refresh status ↻
+		182 text No purchase attempts yet. Proposals and policy blocks appear in activity without a fabricated payment.
+		183 text ACTUAL ACTIONS · ACTUAL OUTPUTS
+		184 heading Agent activity, Value: 3
+			185 text Agent activity
+		186 text No Hidden Reasoning
+		187 button (collapsed) Inspect untrusted product description +, Secondary Actions: Expand
+			188 text Inspect untrusted product description
+			189 text +
+		258 container
+			259 button (expanded) Backend evaluate 2:42:53 PM −, Secondary Actions: Collapse
+				260 text Backend
+				261 text evaluate
+				262 text 2:42:53 PM
+				263 text −
+			264 text {
+  "basket": {
+    "hash": "81155e9c8b8c6d61c861c52ef5c44c43e3d2d0d20a3cab541dc4d6983ea7d9ab",
+    "items": [
+      {
+        "category": "supplies",
+        "quantity": 1,
+        "productId": "pens",
+        "recurring": false,
+        "unitCents": 500
+      }
+    ],
+    "currency": "USD",
+    "taxCents": 0,
+    "itemCents": 500,
+    "merchantId": "demo-office",
+    "totalCents": 500,
+    "shippingCents": 0
+  },
+  "decision": {
+    "kind": "ALLOW",
+    "reasons": []
+  }
+}
+		265 button (collapsed) Live Gemini propose 2:40:08 PM +, Secondary Actions: Expand
+			266 text Live Gemini
+			267 text propose
+			268 text 2:40:08 PM
+			269 text +
+		270 button (collapsed) Live Gemini draft 2:37:29 PM +, Secondary Actions: Expand
+			271 text Live Gemini
+			272 text draft
+			273 text 2:37:29 PM
+			274 text +
+		31 link Description: mandate PAYPAL AI PROTOTYPE, Value: mandate-paypal-ai.vercel.app/
+		32 text AI proposes. Your rules decide.
+		33 text Sandbox funds only.
+
+The focused UI element is 0 AXWebArea Mandate — Agent spending, on your terms, URL: mandate-paypal-ai.vercel.app/

@@ -1,0 +1,47 @@
+{
+  "at": "2026-10-31T09:09:41.594Z",
+  "base": "https://mandate-paypal-ai.vercel.app",
+  "status": "PASS",
+  "newPaymentOrders": 0,
+  "signedTransactionWebhookVerified": false,
+  "evidence": [
+    {
+      "check": "public configuration",
+      "http": 200,
+      "connection": {
+        "paypal": true,
+        "ai": true,
+        "webhooks": true,
+        "database": true
+      }
+    },
+    {
+      "check": "/paypal/return?token=verification-only",
+      "http": 303,
+      "location": "https://mandate-paypal-ai.vercel.app/?paypal=returned",
+      "paymentMutation": false
+    },
+    {
+      "check": "/paypal/cancel?token=verification-only",
+      "http": 303,
+      "location": "https://mandate-paypal-ai.vercel.app/?paypal=cancelled",
+      "paymentMutation": false
+    },
+    {
+      "check": "unauthorized reconciliation rejected",
+      "http": 401
+    },
+    {
+      "check": "unsigned transaction webhook rejected",
+      "http": 400,
+      "error": "INVALID_SIGNATURE"
+    },
+    {
+      "check": "authorized reconciliation",
+      "http": 200,
+      "result": {
+        "outcomes": []
+      }
+    }
+  ]
+}

@@ -1,0 +1,79 @@
+{
+  "at": "2026-10-31T09:09:46.653Z",
+  "base": "https://mandate-paypal-ai.vercel.app",
+  "tests": "PASS",
+  "realPostgreSQL": true,
+  "databaseEnvironment": "hosted",
+  "paymentCalls": 0,
+  "evidence": [
+    {
+      "action": "session",
+      "status": 400,
+      "error": "ORIGIN_REJECTED"
+    },
+    {
+      "action": "session",
+      "status": 200
+    },
+    {
+      "action": "activate",
+      "status": 200
+    },
+    {
+      "action": "evaluate",
+      "status": 200,
+      "decision": "BLOCK"
+    },
+    {
+      "action": "evaluate",
+      "status": 200,
+      "decision": "ALLOW"
+    },
+    {
+      "action": "evaluate",
+      "status": 200,
+      "decision": "REVIEW"
+    },
+    {
+      "action": "evaluate",
+      "status": 200,
+      "decision": "BLOCK"
+    },
+    {
+      "action": "evaluate",
+      "status": 200,
+      "decision": "BLOCK"
+    },
+    {
+      "action": "splitDemo",
+      "status": 200
+    },
+    {
+      "action": "session",
+      "status": 200
+    },
+    {
+      "action": "activate",
+      "status": 200
+    },
+    {
+      "action": "capture",
+      "status": 404,
+      "error": "NOT_FOUND"
+    },
+    {
+      "action": "revoke",
+      "status": 401,
+      "error": "UNAUTHENTICATED"
+    },
+    {
+      "action": "evaluate",
+      "status": 400,
+      "error": "INVALID_INPUT"
+    },
+    {
+      "action": "cancel",
+      "status": 200
+    }
+  ]
+}

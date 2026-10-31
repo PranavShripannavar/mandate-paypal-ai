@@ -30,4 +30,4 @@ Show verified order8DE04494E0613414B with backend Hold before capture. Real auth
 
 Show signature-verified transaction webhook records, stable operation IDs, owner-isolation tests and unresolved-outcome handling. “AI never sees payment credentials or decides whether money moves. This mandate is an application control, not a PayPal-native delegated-wallet permission. Standard buyer approval still applies.”
 
-Live Gemini and real revoke/void evidence are available. Final hosted URL and recording remain open. The current development/build scripts use webpack after observed Turbopack failures.
+Live Gemini and real revoke/void evidence are available. The hosted walkthrough is at https://mandate-paypal-ai.vercel.app; recording remains open. Hosted Gemini and policy controls are verified. Use prior redacted real payment evidence for payment segments unless a new hosted checkout is explicitly approved. The current development/build scripts use webpack after observed Turbopack failures.

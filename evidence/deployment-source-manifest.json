@@ -1,0 +1,135 @@
+{
+  "at": "2026-10-31T09:16:33.878Z",
+  "deploymentId": "dpl_seZBsjB9VSB1TEt8Ph2RzeLAQdgK",
+  "matchesUploadedStaging": true,
+  "criticalFiles": [
+    {
+      "path": "app/api/_runtime.ts",
+      "sha256": "f9a56d31fd9b75af4afc161bc15ce51c4af7bfa6f88ff20a77a5ed7e31572df7"
+    },
+    {
+      "path": "app/api/action/route.ts",
+      "sha256": "e11e91a16211f6c0d169e880417a8f870b99d90e6d5e6fde60a651cd9fe4a4a4"
+    },
+    {
+      "path": "app/api/paypal/webhook/route.ts",
+      "sha256": "9edfe6fc4f214e7a51cb1a0ab8e307cd35d2afa0aa285fe0091b7b59b367fdf1"
+    },
+    {
+      "path": "app/api/reconcile/route.ts",
+      "sha256": "a5f9abfa1c407d23847fa5f0895926838c9e9fefde74a21d2e8f3c2cbf72a0e1"
+    },
+    {
+      "path": "app/api/state/route.ts",
+      "sha256": "89d793119c00df78d16573bef2fa5a571bc4fed91b89bff98dceb83231c808cf"
+    },
+    {
+      "path": "app/globals.css",
+      "sha256": "f2194aa43a4a162a976badbe36ed2accecdc63f4ffc851a1c89c4d4b063d6f85"
+    },
+    {
+      "path": "app/layout.tsx",
+      "sha256": "78f4cb111e6b12a41b846d8d56cef214fefbfd3ba8c91e2f6ebf107571d07039"
+    },
+    {
+      "path": "app/page.tsx",
+      "sha256": "c939fa796ccf8e2be33bfd4b1e42e716bb22dc9e6f484fbbce21ce80e3b661c9"
+    },
+    {
+      "path": "app/paypal/cancel/route.ts",
+      "sha256": "fbee5a9a7b0132ed3b9444c805e59996620f272721f5c59b821fd48806be1948"
+    },
+    {
+      "path": "app/paypal/return/route.ts",
+      "sha256": "ff50dc8ecb6d315dc3ae46a0ab14ff9415e31982e89a1a5f6ee4556837d898a0"
+    },
+    {
+      "path": "app/ui.tsx",
+      "sha256": "60300036c1a5d98cbceff3d8d3e7dd1cd06b366d34a3276ced9a7ee868d8952e"
+    },
+    {
+      "path": "migrations/001_core.sql",
+      "sha256": "14377a4f7b69de0713582df3a220022319d87190df54c03e8b352215415da506"
+    },
+    {
+      "path": "migrations/002_app.sql",
+      "sha256": "1dcddcf48d4ccff27122a1d0003ac7bc311064891a02a3c1250d8416f6658862"
+    },
+    {
+      "path": "migrations/003_evidence.sql",
+      "sha256": "07efa0f40f2ff89b7435f305b3e7790592e570e1b48f17b141b333efd25fee4f"
+    },
+    {
+      "path": "migrations/004_hold.sql",
+      "sha256": "4e0d64b1b64765a8366809fd32b66bb86165bc51c2bdbe8311c4aa92630c2ac4"
+    },
+    {
+      "path": "package-lock.json",
+      "sha256": "2e52bfc2ec119c8f0702ec8ed975a736b127953e79dac2a81bff9792a412885a"
+    },
+    {
+      "path": "package.json",
+      "sha256": "95dc54adcf68781ee922bde2616281fdeaf6094385d0a8e9c51c5c409606dd0c"
+    },
+    {
+      "path": "postcss.config.mjs",
+      "sha256": "cc8f514ba7fda07a2e2828670c99e34275f314b350628d8c2ab39e68e50bf9f8"
+    },
+    {
+      "path": "scripts/migrate.ts",
+      "sha256": "dcf21fdde174a4a56e49bc1f1d9ff013d3b4aa4e2a8227453ed16eefd0ba884a"
+    },
+    {
+      "path": "src/ai.ts",
+      "sha256": "3d5a9af7ccc75623340d9cff74eb6e32b60ca21547c04adefeb9ed7df0c107b5"
+    },
+    {
+      "path": "src/app-service.ts",
+      "sha256": "c4cbdaef95ba66d5cf279ce3e17650c518fd6f46577dee2439eefffbb74e9f73"
+    },
+    {
+      "path": "src/callback.ts",
+      "sha256": "f2e01aa7cbdeb8cd81ae9321281ffad632aa372f57957af1833f94a36abac106"
+    },
+    {
+      "path": "src/db.ts",
+      "sha256": "497395d5256386b7bfc595256c67ff7878055aea98e33f34da26110be2a7d319"
+    },
+    {
+      "path": "src/engine.ts",
+      "sha256": "3c4b370e051a01ab94dfe809d3f356fe23b3b8f3fb42630e32a6d23e35b2dec5"
+    },
+    {
+      "path": "src/paypal.ts",
+      "sha256": "95299d873f05ea0faf011384fb4e41fc8a869270b3594a8b6891aef7b2ced470"
+    },
+    {
+      "path": "src/policy.ts",
+      "sha256": "4a8e75bc4af15a342c9425fabd193be484c2b10f3a0fd5ddd95181141d044358"
+    },
+    {
+      "path": "src/seed.ts",
+      "sha256": "d40010922517dfea43934db0c3f5c0179075bc7c61fcd9857c8a77fcc2fc833c"
+    },
+    {
+      "path": "src/session.ts",
+      "sha256": "d3c4cabc439b70c0a5687ee39489dd10366bc0085052271ee8fb232a0da55694"
+    },
+    {
+      "path": "src/webhooks.ts",
+      "sha256": "9c2267e360ca3b045a41169558be5997be3ed793a82963d8861635420a942def"
+    },
+    {
+      "path": "src/worker.ts",
+      "sha256": "04a0a2f3cb4f6db8c4f21e4bbe6ee91364dce3c365ed2e357ddb3cd843e1e384"
+    },
+    {
+      "path": "tsconfig.json",
+      "sha256": "941297e7c72c29bf5b03e2a049bde6561dd3709628f06b7ea74830a7073abc7d"
+    },
+    {
+      "path": "vercel.json",
+      "sha256": "5d77f6c2142e38d788171df290bf1af58423a2422382f29c6fec0286acc50016"
+    }
+  ]
+}

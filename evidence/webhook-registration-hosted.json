@@ -1,0 +1,35 @@
+{
+  "at": "2026-10-31T08:59:42.542Z",
+  "environment": "sandbox",
+  "id": "817679536A2566226",
+  "url": "https://mandate-paypal-ai.vercel.app/api/paypal/webhook",
+  "event_types": [
+    {
+      "name": "CHECKOUT.ORDER.APPROVED",
+      "description": "An order has been approved by buyer."
+    },
+    {
+      "name": "PAYMENT.AUTHORIZATION.CREATED",
+      "description": "A payment authorization is created, approved, executed, or a future payment authorization is created."
+    },
+    {
+      "name": "PAYMENT.AUTHORIZATION.VOIDED",
+      "description": "A payment authorization is voided."
+    },
+    {
+      "name": "PAYMENT.CAPTURE.COMPLETED",
+      "description": "A payment capture completes."
+    },
+    {
+      "name": "PAYMENT.CAPTURE.PENDING",
+      "description": "The state of a payment capture changes to pending."
+    },
+    {
+      "name": "PAYMENT.CAPTURE.DENIED",
+      "description": "A payment capture is denied."
+    }
+  ],
+  "http": 201,
+  "debugId": "f885147d64e04",
+  "verifiedTransactionSignatures": false
+}

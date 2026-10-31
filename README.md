@@ -6,9 +6,11 @@
 
 The Next.js interface, Gemini adapter, signed demo sessions, deterministic policy engine, atomic PostgreSQL ledger, audit trail and five scenario controls are implemented. Real ledger-backed buyer approval → authorization → capture is verified for USD 5.00. Real transaction webhook signatures and duplicate execution are verified. See LIVE-VERIFICATION.md and evidence/live-ledger.json.
 
-Real authorize → revoke → blocked capture → void and live Gemini policy/proposal/explanation are now verified locally. Final hosted deployment remains open. No simulated payment success is used. Checkpoint history is in CHECKPOINT-1.md, CHECKPOINT-2.md and PROGRESS.md.
+Real authorize → revoke → blocked capture → void and live Gemini policy/proposal/explanation are verified locally. The app is deployed at https://mandate-paypal-ai.vercel.app on Vercel Hobby with dedicated Neon Free PostgreSQL. Hosted HTTP, Gemini, callback and access-control checks pass; a new payment and signed transaction webhook on the final host remain unverified. See HOSTED-VERIFICATION.md. No simulated payment success is used.
 
 ## 60-second walkthrough
+
+Judge entry: open https://mandate-paypal-ai.vercel.app and choose either seeded demo owner; no signup is required. Draft with Gemini or review the labeled Guided seed, activate, then evaluate proposals. Evaluation and the split-spending scenario create no PayPal payment. The captured-payment and void reports contain prior real evidence. Payment judging requires a separately approved sandbox checkout and the purpose-created personal buyer login supplied privately by the owner; never publish its password.
 
 1. Run npm ci, then npm run dev from this Mandate directory with Node 24 LTS. Open http://127.0.0.1:3000.
 2. Choose Northstar Studio or Atlas Workshop. Review the seeded guided draft: $60 per fixed period, $40 per order, approved merchant/categories, no subscriptions, review above $30. Activate only after reviewing.
@@ -41,15 +43,15 @@ The adapter uses strict schemas, 4,000-character input limits, bounded 2,500 out
 
 ## Webhooks and callbacks
 
-Current temporary HTTPS webhook verification URL and registration are in evidence/webhook-registration.json. The official cloudflared binary was downloaded into ignored work/ and matched its GitHub release SHA256. This tunnel is for local verification, has no uptime guarantee, and is not final hosting.
+The stable hosted sandbox webhook and registration are in evidence/webhook-registration-hosted.json. Earlier local tunnel evidence remains in evidence/webhook-registration.json. The tunnel was only for local verification and is not the final host.
 
 Register a new stable URL with:
 
 ```powershell
-node --import tsx scripts/register-webhook.ts https://YOUR-HOST/api/paypal/webhook
+node --import tsx scripts/register-webhook.ts https://YOUR-HOST/api/paypal/webhook --hosted
 ```
 
-The script stores PAYPAL_WEBHOOK_ID privately and writes redacted registration evidence. It reuses an existing matching registration rather than duplicating it. Real events are verified with PayPal's postback mechanism; only SUCCESS enters the trusted inbox. Simulator-only events cannot establish this verification.
+The hosted option preserves local environment configuration and writes separate redacted registration evidence. Store the returned PAYPAL_WEBHOOK_ID only in the target server environment. The script reuses an existing matching registration. Real events are verified with PayPal's postback mechanism; only SUCCESS enters the trusted inbox. Registration and unsigned-event rejection do not establish a real signed transaction on the final host.
 
 APP_URL controls return/cancel URLs and allowed write origin. Use the same hostname consistently (127.0.0.1 locally); cookies are scoped by hostname. New /paypal/return callbacks redirect to configured APP_URL and never trigger payment execution. The old standalone port 8765 was occupied; its verified replacement is npm run callback on port 8766. That legacy probe callback is distinct from the current Next.js application's callback.
 
@@ -65,7 +67,40 @@ npm run build
 node --import tsx scripts/http-smoke.ts
 ```
 
-Real PostgreSQL integration tests use a separate native cluster and unique schemas; PayPal is mocked only in that automated suite. Preserve and distinguish these tests from real sandbox evidence. Docker Compose is provided as an optional unverified alternative; the owner explicitly approved native PostgreSQL instead. For an existing dedicated database, set DATABASE_URL, run npm run db:migrate, then npm run test:integration. Migrations 001–003 preserve historical records. Never point these tools at an unrelated database.
+Real PostgreSQL integration tests use a separate native cluster and unique schemas; PayPal is mocked only in that automated suite. Preserve and distinguish these tests from real sandbox evidence. Docker Compose is provided as an optional unverified alternative; the owner explicitly approved native PostgreSQL instead. For an existing dedicated test database, set DATABASE_URL, run npm run db:migrate, then npm run test:integration. Migrations001–004 preserve historical records. Hosted migrations execute inside Vercel without copying its database credential locally. Never point test tools at a production or unrelated database.
+
+## Architecture
+
+```mermaid
+flowchart LR
+  Owner --> UI[Next.js demo UI]
+  UI -->|Signed session and origin check|Engine[Backend policy and transaction engine]
+  Engine -->|Planning context only|AI[Gemini]
+  AI -->|Untrusted schema-checked proposals|Engine
+  Engine -->|Trusted prices and atomic ledger|PG[(PostgreSQL)]
+  Engine -->|Durable operation then sandbox REST|PayPal[PayPal Sandbox]
+  Owner -->|Separate buyer approval|PayPal
+  PayPal -->|Verified webhook and authoritative reads|Engine
+```
+
+Database transactions are short and never span PayPal network calls. The AI cannot activate policies or execute a payment operation.
+
+```mermaid
+stateDiagram-v2
+  [*] --> APPROVED: Policy allows and budget reserved
+  APPROVED --> ORDER_CREATED: Create order
+  ORDER_CREATED --> BUYER_APPROVED: Authoritative approval
+  BUYER_APPROVED --> AUTHORIZED: Revalidate and authorize
+  AUTHORIZED --> CAPTURED: Revalidate and capture confirmed
+  AUTHORIZED --> VOIDED: Disabled and void confirmed
+  APPROVED --> RELEASED: Disabled before remote execution
+  ORDER_CREATED --> RELEASED: Disabled and no remote hold confirmed
+  AUTHORIZED --> RECONCILING: Uncertain capture or pending result
+  RECONCILING --> CAPTURED: Authoritative capture confirmed
+  RECONCILING --> VOIDED: Authoritative void confirmed
+```
+
+The diagram shows main transitions. Any ambiguous mutation or mismatched remote data can enter RECONCILING; its reservation remains held until authoritative evidence justifies spending or release.
 
 ## Trust boundaries and limitations
 
@@ -73,7 +108,7 @@ The mandate is an application-level control, not a PayPal-native delegated walle
 
 Available budget is the fixed-period total minus confirmed spending and held reservations. Blocked proposals create no hold. Reservations become spent only after authoritative capture confirmation. Cancel/expiry does not imply remote cancellation; uncertain remote outcomes retain budget. Refunds do not replenish mandate budget. A remote capture already executing can race with revocation and must be recorded honestly.
 
-Signed sessions are purpose-created seeded demo access, not production signup/authentication. Routes check session ownership and current session mandate, write origin, strict input and server usage limits. The audit trail is not claimed tamper-proof. Public deployment still needs reviewed rate limits, hosting/database configuration, stable webhooks and scheduling. Deployment protection must permit PayPal's signed webhook POST while private administrative routes remain protected.
+Signed sessions are purpose-created seeded demo access, not production signup/authentication. Routes check session ownership and current session mandate, write origin, strict input and server usage limits. The audit trail is not claimed tamper-proof. The public deployment has dedicated PostgreSQL, stable webhook configuration and a daily fallback scheduler; prompt continuous reconciliation and final-host signed transaction evidence remain open. The public webhook verifies signatures; administrative reconciliation requires its server secret.
 
 ## Troubleshooting and delivery
 
@@ -85,4 +120,4 @@ Signed sessions are purpose-created seeded demo access, not production signup/au
 - Gemini 503/504 or exhausted quota: use visibly labeled Guided Replay and retain actual failure status.
 - Database port collision: stop only the verified Mandate-owned instance or choose a dedicated loopback port; never terminate unrelated services or wipe data.
 
-See DEPLOYMENT.md for no-charge hosting prerequisites and judging dates, DEMO-SCRIPT.md for the under-three-minute recording plan, HACKATHON-DESCRIPTION.md for submission text, and LICENSE for MIT terms. No public push, paid commitment or final hosted deployment has been performed.
+See DEPLOYMENT.md for release instructions and judging maintenance, HOSTED-VERIFICATION.md for final-host evidence and gaps, DEMO-SCRIPT.md for the under-three-minute recording plan, HACKATHON-DESCRIPTION.md for submission text, and LICENSE for MIT terms. The application is hosted; the source repository remains private. No paid commitment was accepted.

@@ -63,6 +63,6 @@ Current default is gemini-3.5-flash-lite. The prior3.1Flash-Lite request returne
 
 ## Still open
 
-- Final hosted deployment and hosted PostgreSQL. Browser confirmed Pranav is on Hobby. Neon integration terms are awaiting owner acceptance before plan review; no database or deployment has been provisioned. No paid commitment was made.
+- Final-host real payment and signed transaction webhook. The app is now deployed on verified Vercel Hobby and dedicated Neon Free PostgreSQL; hosted HTTP/Gemini/callback/access checks pass. A new payment was not created for deployment verification. See HOSTED-VERIFICATION.md for exact evidence and operational gaps.
 
 Raw redacted API/ledger/audit/signature evidence: evidence/live-ledger.json. Export checks that the current PayPal credentials, Gemini key and local database/session secrets are absent before writing it.

@@ -1,27 +1,27 @@
-# Deployment preparation
+# Deployment runbook
 
-Do not treat this file as evidence of deployment. No final hosting deployment has been created yet. Owner authorized deployment without charges. The Vercel dashboard confirmed Hobby on31October2026; the dedicated hosted database remains unresolved.
+Production is live at https://mandate-paypal-ai.vercel.app. See HOSTED-VERIFICATION.md for exact deployment ID, evidence and remaining review gaps. Owner authorized only free resources; Vercel Hobby and Neon Free were confirmed in the dashboard on 31 October 2026. No paid plan, trial or card step was accepted.
 
-## Intended target
+## Current target
 
-Connected Vercel team: Pranav / pranav-b7db / team_yxgP23j3ylo7nu1Xjh8Dhjl3. The connector omits billing-plan data; the signed-in dashboard displays Hobby. Owner authorized inspecting and using only an explicitly USD0 Neon plan, without card, paid trial or overage billing. Setup currently requires owner acceptance of Marketplace/Neon terms before plan selection. Do not provision until the plan is visibly confirmed free. Never read/reuse another project's environment secrets.
+Vercel team: Pranav / pranav-b7db / team_yxgP23j3ylo7nu1Xjh8Dhjl3. Dedicated project: mandate-paypal-ai. Dedicated database: mandate-postgres, Neon Free, linked only to this project's Production. Owner accepted Marketplace/Neon terms and explicitly approved server-only credential storage in Mandate. Never read/reuse another project's environment secrets. The private Git integration could not connect; use the CLI release path instead of assuming pushes deploy automatically.
 
 Local verification uses native PostgreSQL 18.4. Vercel Functions require a hosted reachable PostgreSQL database; the workspace's loopback database cannot be used by a hosted deployment. Provision only a confirmed free resource or obtain approval before a paid commitment. Do not expose local PostgreSQL over the public tunnel.
 
 ## Before deployment
 
-1. Confirm the no-charge host/team and configure a purpose-created hosted DATABASE_URL privately. Prefer a nearby database region and pool-compatible connection. Do not weaken TLS verification.
+1. Verify .vercel/project.json still targets Mandate in pranav-b7db. Production DATABASE_URL and DATABASE_URL_UNPOOLED are managed Secret variables. Do not pull database credentials into local files. Preserve full TLS certificate verification.
 2. Generate a new SESSION_SECRET (32+ random bytes) and CRON_SECRET privately. Set APP_URL to the final HTTPS domain. Set PAYPAL_CLIENT_ID, PAYPAL_CLIENT_SECRET, PAYPAL_MERCHANT_ID, GEMINI_API_KEY and tested GEMINI_MODEL as sensitive server variables. Never prefix secrets NEXT_PUBLIC_. Keep sandbox-only API routing.
-3. Apply migrations 001–004 and seed with npm run db:migrate against that dedicated database. This preserves old records and creates the demo catalog/owners and durable capture hold. Never migrate an unrelated database.
+3. vercel.json runs npm run db:migrate then npm run build INSIDE Vercel. Migration runner prefers DATABASE_URL_UNPOOLED; pooled Neon rejects startup search_path. Migrations001–004 and seed are idempotent and preserve records. Never migrate an unrelated database.
 4. Run npm ci, npm run lint, npm run typecheck, npm test, npm run test:postgres and npm run build. Export current-source evidence separately from checkpoint history. Native database tests are explicitly approved; Docker is not needed.
-5. Upload an explicit allowlist of source/config/migrations/package-lock only. Exclude .env*, work/, node_modules/, .next/, dist/, local credentials, private database data and operational logs. Public repository push remains unauthorized.
+5. Run node --import tsx scripts/stage-deploy.ts after committing source. It checks the linked project and copies only an explicit source/config/migration allowlist to a new ignored work/deploy-* folder. Deploy FROM that folder with npx --yes vercel@65.9.0 deploy --prod --yes --scope pranav-b7db. Environment files, evidence, database data and credentials are excluded. Public repository push remains unauthorized.
 
 ## After deployment
 
-1. Register the stable public /api/paypal/webhook URL on the sandbox REST app and configure the returned webhook ID. The temporary trycloudflare URL is a local verification aid, not a maintained deployment.
-2. Verify standard buyer approval and callbacks on the deployed domain, a real ledger-backed capture, duplicate execution, and real authorization/revocation/void. Save redacted IDs and responses.
+1. Stable production sandbox webhook817679536A2566226 is registered at /api/paypal/webhook and configured as a production Secret. scripts/register-webhook.ts URL --hosted preserves the local registration and writes separate redacted evidence. Registration alone is not a transaction signature test.
+2. Public HTTP, PostgreSQL, Gemini, callbacks and access-control verification pass. A new real checkout/capture/void test on this final host requires separate explicit owner approval. Do not create a replacement or payment merely to repeat local evidence.
 3. Verify real signed transaction webhooks on the final deployment. Local signed transaction verification is already evidenced but does not prove the final host configuration.
-4. Provide continuous/bounded reconciliation using an approved free scheduler or host capability. GET /api/reconcile requires Authorization: Bearer CRON_SECRET. Vercel Hobby cron is limited to once daily and has imprecise timing; that alone is insufficient for prompt cleanup of a ten-minute application approval. Public webhooks and owner-triggered status checks work independently, but do not claim a continuously scheduled worker until configured and observed.
+4. GET /api/reconcile requires Authorization: Bearer CRON_SECRET. Daily fallback cron at03:00UTC is configured and manual authenticated invocation passed. Scheduled execution is not yet observed. Hobby timing is imprecise and once daily is insufficient for prompt ten-minute cleanup. Webhooks and owner checks work independently; do not claim a continuous worker or silently upgrade plans.
 5. Keep unresolved outcomes and exhausted retries visible. App expiry blocks execution even if a remote approval URL still works. A capture already executing can race with revocation.
 
 ## Judging availability
