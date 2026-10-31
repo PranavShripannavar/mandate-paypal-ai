@@ -160,3 +160,12 @@ Owner authorized creation of US sandbox fixtures and accepted the Developer Agre
 - No safe reapproval-in-place API exists; immutable consumed permission is preserved. One replacement remains authorized but has NOT been created while buyer login setup is blocked.
 - Browser automatic approval review rejected Developer Dashboard navigation because it redirected to production www.paypal.com, outside sandbox scope with potential real-account exposure. Did not bypass via alternate surface/API. Owner takeover is needed to obtain buyer credentials privately and perform sandbox login/approval. Do not print/store buyer password or create another checkout until owner is ready.
 - Updated redacted live-ledger evidence. Typecheck and lint passed after retirement tooling change. Live authorize/revoke/void remains open.
+
+## Single authorized replacement created — 2026-10-31
+
+- Owner reported ready and requested the already-authorized single replacement, with personal buyer login/approval handled by owner. Restarted existing persistent native PostgreSQL and Next callback application; no database reset.
+- Checked all existing orders: only prior captured77U17875SJ4927124 and retired2RL11757V75590309 existed. Reconciled retired order again before replacement; no authorization/capture, EXPIRED permission and RELEASED reservation.
+- Added fixed-key preparation script. First attempt reserved locally but its audit INSERT failed on uuid/text type inference BEFORE any PayPal CREATE; corrected parameter and resumed the same reservation/key. Exactly one replacement CREATE operation/order resulted.
+- Replacement order8DE04494E0613414B, purchase dcb2f9f2-53b0-49db-b5a3-e9e47e02709e, USD5.00, ORDER_CREATED,500HELD, hold_before_capture=true committed before PayPal CREATE. Permission expires2026-10-31T02:27:37.161Z (07:57:37IST). No authorization or capture yet. Same fixed-key script must never create another order or renew permission.
+- Opened sandbox approval in in-app browser tab9 and asked owner to approve using US personal sandbox buyer. Password not accessed. Handoff screenshot saved. Typecheck/lint passed. Redacted live-ledger export preserves all three orders.
+- After approval: reconcile this exact order, authorize only while valid with live-continue.ts hold, then revoke, verify REVOKED capture rejection, real VOID and authoritative reconciliation. Never run capture mode for this test. Do not create duplicates if callback times out.

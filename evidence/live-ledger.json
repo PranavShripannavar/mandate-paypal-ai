@@ -1,5 +1,5 @@
 {
-  "at": "2026-10-29T13:34:59.373Z",
+  "at": "2026-10-31T02:18:21.915Z",
   "purchases": [
     {
       "id": "51e989b8-0eac-41fb-ae99-7f408cc717cd",
@@ -35,6 +35,24 @@
       "disabled_at": "2026-10-29T13:34:26.114Z",
       "disable_reason": "EXPIRED",
       "approval_expires": "2026-10-29T12:45:59.285Z",
+      "hold_before_capture": true
+    },
+    {
+      "id": "dcb2f9f2-53b0-49db-b5a3-e9e47e02709e",
+      "owner_id": "22222222-2222-4222-8222-222222222222",
+      "mandate_id": "cacce3ce-3912-47ff-a592-672444788fae",
+      "version": 1,
+      "total_cents": 500,
+      "currency": "USD",
+      "merchant_id": "demo-office",
+      "state": "ORDER_CREATED",
+      "reservation": "HELD",
+      "order_id": "8DE04494E0613414B",
+      "authorization_id": null,
+      "capture_id": null,
+      "disabled_at": null,
+      "disable_reason": null,
+      "approval_expires": "2026-10-31T02:27:37.161Z",
       "hold_before_capture": true
     }
   ],
@@ -104,6 +122,17 @@
       "finished_at": "2026-10-29T13:34:28.437Z",
       "error_code": null,
       "remote_id": null
+    },
+    {
+      "purchase_id": "dcb2f9f2-53b0-49db-b5a3-e9e47e02709e",
+      "kind": "CREATE",
+      "request_id": "09bf9406-4314-4588-b473-8d5575013bc4",
+      "payload_hash": "f976f5150d776fb523a44e38db83175173d7d2895225cfd2701b89d649634b40",
+      "outcome": "SUCCEEDED",
+      "started_at": "2026-10-31T02:17:47.083Z",
+      "finished_at": "2026-10-31T02:17:51.725Z",
+      "error_code": null,
+      "remote_id": "8DE04494E0613414B"
     }
   ],
   "ledger": [
@@ -138,6 +167,14 @@
       "kind": "RELEASE",
       "cents": 500,
       "at": "2026-10-29T13:34:28.440Z"
+    },
+    {
+      "id": "7",
+      "purchase_id": "dcb2f9f2-53b0-49db-b5a3-e9e47e02709e",
+      "mandate_id": "cacce3ce-3912-47ff-a592-672444788fae",
+      "kind": "RESERVE",
+      "cents": 500,
+      "at": "2026-10-31T02:17:37.181Z"
     }
   ],
   "webhooks": [
@@ -776,6 +813,87 @@
         "replacementAuthorized": true
       },
       "at": "2026-10-29T13:34:28.444Z"
+    },
+    {
+      "id": "62",
+      "owner_id": "22222222-2222-4222-8222-222222222222",
+      "mandate_id": "cacce3ce-3912-47ff-a592-672444788fae",
+      "purchase_id": "dcb2f9f2-53b0-49db-b5a3-e9e47e02709e",
+      "actor": "22222222-2222-4222-8222-222222222222",
+      "event": "EXTRA_REVIEW_APPROVED",
+      "details": {
+        "version": 1,
+        "basketHash": "81155e9c8b8c6d61c861c52ef5c44c43e3d2d0d20a3cab541dc4d6983ea7d9ab"
+      },
+      "at": "2026-10-31T02:17:37.183Z"
+    },
+    {
+      "id": "63",
+      "owner_id": "22222222-2222-4222-8222-222222222222",
+      "mandate_id": "cacce3ce-3912-47ff-a592-672444788fae",
+      "purchase_id": "dcb2f9f2-53b0-49db-b5a3-e9e47e02709e",
+      "actor": "22222222-2222-4222-8222-222222222222",
+      "event": "APPLICATION_APPROVAL",
+      "details": {
+        "expires": "2026-10-31T02:27:37.161Z",
+        "approvalId": "06ff896c-4d43-4955-9882-72abd37bca22",
+        "basketHash": "81155e9c8b8c6d61c861c52ef5c44c43e3d2d0d20a3cab541dc4d6983ea7d9ab",
+        "totalCents": 500
+      },
+      "at": "2026-10-31T02:17:37.183Z"
+    },
+    {
+      "id": "64",
+      "owner_id": "22222222-2222-4222-8222-222222222222",
+      "mandate_id": "cacce3ce-3912-47ff-a592-672444788fae",
+      "purchase_id": "dcb2f9f2-53b0-49db-b5a3-e9e47e02709e",
+      "actor": "22222222-2222-4222-8222-222222222222",
+      "event": "IDEMPOTENT_RESERVATION_REPLAY",
+      "details": {
+        "key": "owner-authorized-void-replacement-2026-10-31"
+      },
+      "at": "2026-10-31T02:17:47.061Z"
+    },
+    {
+      "id": "65",
+      "owner_id": "22222222-2222-4222-8222-222222222222",
+      "mandate_id": "cacce3ce-3912-47ff-a592-672444788fae",
+      "purchase_id": "dcb2f9f2-53b0-49db-b5a3-e9e47e02709e",
+      "actor": "22222222-2222-4222-8222-222222222222",
+      "event": "OWNER_APPROVED_VOID_REPLACEMENT",
+      "details": {
+        "totalCents": 500,
+        "replacesOrder": "2RL11757V75590309",
+        "holdBeforeCapture": true
+      },
+      "at": "2026-10-31T02:17:47.068Z"
+    },
+    {
+      "id": "66",
+      "owner_id": "22222222-2222-4222-8222-222222222222",
+      "mandate_id": "cacce3ce-3912-47ff-a592-672444788fae",
+      "purchase_id": "dcb2f9f2-53b0-49db-b5a3-e9e47e02709e",
+      "actor": "22222222-2222-4222-8222-222222222222",
+      "event": "PAYMENT_ATTEMPT",
+      "details": {
+        "kind": "CREATE",
+        "requestId": "09bf9406-4314-4588-b473-8d5575013bc4",
+        "payloadHash": "f976f5150d776fb523a44e38db83175173d7d2895225cfd2701b89d649634b40"
+      },
+      "at": "2026-10-31T02:17:47.084Z"
+    },
+    {
+      "id": "67",
+      "owner_id": "22222222-2222-4222-8222-222222222222",
+      "mandate_id": "cacce3ce-3912-47ff-a592-672444788fae",
+      "purchase_id": "dcb2f9f2-53b0-49db-b5a3-e9e47e02709e",
+      "actor": "22222222-2222-4222-8222-222222222222",
+      "event": "PAYMENT_RESPONSE",
+      "details": {
+        "kind": "CREATE",
+        "orderId": "8DE04494E0613414B"
+      },
+      "at": "2026-10-31T02:17:51.726Z"
     }
   ],
   "evidence": [
@@ -3474,6 +3592,182 @@
             },
             "custom_id": "71b66a86-2c5d-4764-967d-aa78fb25dc4e",
             "reference_id": "71b66a86-2c5d-4764-967d-aa78fb25dc4e"
+          }
+        ]
+      }
+    },
+    {
+      "id": "34",
+      "purchase_id": "dcb2f9f2-53b0-49db-b5a3-e9e47e02709e",
+      "at": "2026-10-31T02:17:49.973Z",
+      "method": "POST",
+      "path": "/v2/checkout/orders",
+      "request_id": "09bf9406-4314-4588-b473-8d5575013bc4",
+      "http": 200,
+      "debug_id": "f549241d99515",
+      "request": {
+        "intent": "AUTHORIZE",
+        "payment_source": "[REDACTED]",
+        "purchase_units": [
+          {
+            "items": [
+              {
+                "name": "[REDACTED]",
+                "category": "PHYSICAL_GOODS",
+                "quantity": "1",
+                "unit_amount": {
+                  "value": "5.00",
+                  "currency_code": "USD"
+                }
+              }
+            ],
+            "payee": {
+              "merchant_id": "VY8VQJVTBFPV4"
+            },
+            "amount": {
+              "value": "5.00",
+              "breakdown": {
+                "shipping": {
+                  "value": "0.00",
+                  "currency_code": "USD"
+                },
+                "tax_total": {
+                  "value": "0.00",
+                  "currency_code": "USD"
+                },
+                "item_total": {
+                  "value": "5.00",
+                  "currency_code": "USD"
+                }
+              },
+              "currency_code": "USD"
+            },
+            "custom_id": "dcb2f9f2-53b0-49db-b5a3-e9e47e02709e",
+            "reference_id": "dcb2f9f2-53b0-49db-b5a3-e9e47e02709e"
+          }
+        ]
+      },
+      "response": {
+        "id": "8DE04494E0613414B",
+        "links": [
+          {
+            "rel": "self",
+            "href": "https://api.sandbox.paypal.com/v2/checkout/orders/8DE04494E0613414B",
+            "method": "GET"
+          },
+          {
+            "rel": "payer-action",
+            "href": "https://www.sandbox.paypal.com/checkoutnow?token=8DE04494E0613414B",
+            "method": "GET"
+          }
+        ],
+        "intent": "AUTHORIZE",
+        "status": "PAYER_ACTION_REQUIRED",
+        "payment_source": "[REDACTED]",
+        "purchase_units": [
+          {
+            "items": [
+              {
+                "name": "[REDACTED]",
+                "category": "PHYSICAL_GOODS",
+                "quantity": "1",
+                "unit_amount": {
+                  "value": "5.00",
+                  "currency_code": "USD"
+                }
+              }
+            ],
+            "payee": {
+              "merchant_id": "VY8VQJVTBFPV4"
+            },
+            "amount": {
+              "value": "5.00",
+              "breakdown": {
+                "shipping": {
+                  "value": "0.00",
+                  "currency_code": "USD"
+                },
+                "tax_total": {
+                  "value": "0.00",
+                  "currency_code": "USD"
+                },
+                "item_total": {
+                  "value": "5.00",
+                  "currency_code": "USD"
+                }
+              },
+              "currency_code": "USD"
+            },
+            "custom_id": "dcb2f9f2-53b0-49db-b5a3-e9e47e02709e",
+            "reference_id": "dcb2f9f2-53b0-49db-b5a3-e9e47e02709e"
+          }
+        ]
+      }
+    },
+    {
+      "id": "35",
+      "purchase_id": "dcb2f9f2-53b0-49db-b5a3-e9e47e02709e",
+      "at": "2026-10-31T02:17:51.720Z",
+      "method": "GET",
+      "path": "/v2/checkout/orders/8DE04494E0613414B",
+      "request_id": null,
+      "http": 200,
+      "debug_id": "f9483755eb9d8",
+      "request": null,
+      "response": {
+        "id": "8DE04494E0613414B",
+        "links": [
+          {
+            "rel": "self",
+            "href": "https://api.sandbox.paypal.com/v2/checkout/orders/8DE04494E0613414B",
+            "method": "GET"
+          },
+          {
+            "rel": "payer-action",
+            "href": "https://www.sandbox.paypal.com/checkoutnow?token=8DE04494E0613414B",
+            "method": "GET"
+          }
+        ],
+        "intent": "AUTHORIZE",
+        "status": "PAYER_ACTION_REQUIRED",
+        "create_time": "2026-10-31T02:17:49Z",
+        "payment_source": "[REDACTED]",
+        "purchase_units": [
+          {
+            "items": [
+              {
+                "name": "[REDACTED]",
+                "category": "PHYSICAL_GOODS",
+                "quantity": "1",
+                "unit_amount": {
+                  "value": "5.00",
+                  "currency_code": "USD"
+                }
+              }
+            ],
+            "payee": {
+              "merchant_id": "VY8VQJVTBFPV4"
+            },
+            "amount": {
+              "value": "5.00",
+              "breakdown": {
+                "shipping": {
+                  "value": "0.00",
+                  "currency_code": "USD"
+                },
+                "tax_total": {
+                  "value": "0.00",
+                  "currency_code": "USD"
+                },
+                "item_total": {
+                  "value": "5.00",
+                  "currency_code": "USD"
+                }
+              },
+              "currency_code": "USD"
+            },
+            "custom_id": "dcb2f9f2-53b0-49db-b5a3-e9e47e02709e",
+            "reference_id": "dcb2f9f2-53b0-49db-b5a3-e9e47e02709e"
           }
         ]
       }
