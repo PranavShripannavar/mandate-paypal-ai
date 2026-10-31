@@ -1,5 +1,5 @@
 {
-  "at": "2026-10-31T02:18:21.915Z",
+  "at": "2026-10-31T02:20:43.513Z",
   "purchases": [
     {
       "id": "51e989b8-0eac-41fb-ae99-7f408cc717cd",
@@ -45,13 +45,13 @@
       "total_cents": 500,
       "currency": "USD",
       "merchant_id": "demo-office",
-      "state": "ORDER_CREATED",
-      "reservation": "HELD",
+      "state": "VOIDED",
+      "reservation": "RELEASED",
       "order_id": "8DE04494E0613414B",
-      "authorization_id": null,
+      "authorization_id": "88N0380694842573V",
       "capture_id": null,
-      "disabled_at": null,
-      "disable_reason": null,
+      "disabled_at": "2026-10-31T02:20:25.956Z",
+      "disable_reason": "REVOKED",
       "approval_expires": "2026-10-31T02:27:37.161Z",
       "hold_before_capture": true
     }
@@ -133,6 +133,39 @@
       "finished_at": "2026-10-31T02:17:51.725Z",
       "error_code": null,
       "remote_id": "8DE04494E0613414B"
+    },
+    {
+      "purchase_id": "dcb2f9f2-53b0-49db-b5a3-e9e47e02709e",
+      "kind": "RECONCILE",
+      "request_id": "11633bfd-741c-4258-bd1d-4df16b6bd7ec",
+      "payload_hash": "read-only",
+      "outcome": "SUCCEEDED",
+      "started_at": "2026-10-31T02:20:11.798Z",
+      "finished_at": "2026-10-31T02:20:25.942Z",
+      "error_code": null,
+      "remote_id": null
+    },
+    {
+      "purchase_id": "dcb2f9f2-53b0-49db-b5a3-e9e47e02709e",
+      "kind": "AUTHORIZE",
+      "request_id": "7b611197-e9f5-4db6-a099-13d05e4633b9",
+      "payload_hash": "7cf2d61147f6e7eaf4175d7261099bedab51cf0aea52abcebfece8f42b9a189f",
+      "outcome": "SUCCEEDED",
+      "started_at": "2026-10-31T02:20:14.386Z",
+      "finished_at": "2026-10-31T02:20:18.494Z",
+      "error_code": null,
+      "remote_id": "88N0380694842573V"
+    },
+    {
+      "purchase_id": "dcb2f9f2-53b0-49db-b5a3-e9e47e02709e",
+      "kind": "VOID",
+      "request_id": "8691b4cc-7286-4283-a03d-a91482d64d20",
+      "payload_hash": "ea5ae7c6678302a606d8bb87d4df9fd499921a5437173c7f6804de797e0d3a8a",
+      "outcome": "SUCCEEDED",
+      "started_at": "2026-10-31T02:20:25.975Z",
+      "finished_at": "2026-10-31T02:20:30.671Z",
+      "error_code": null,
+      "remote_id": "88N0380694842573V"
     }
   ],
   "ledger": [
@@ -175,6 +208,14 @@
       "kind": "RESERVE",
       "cents": 500,
       "at": "2026-10-31T02:17:37.181Z"
+    },
+    {
+      "id": "8",
+      "purchase_id": "dcb2f9f2-53b0-49db-b5a3-e9e47e02709e",
+      "mandate_id": "cacce3ce-3912-47ff-a592-672444788fae",
+      "kind": "RELEASE",
+      "cents": 500,
+      "at": "2026-10-31T02:20:30.674Z"
     }
   ],
   "webhooks": [
@@ -894,6 +935,136 @@
         "orderId": "8DE04494E0613414B"
       },
       "at": "2026-10-31T02:17:51.726Z"
+    },
+    {
+      "id": "68",
+      "owner_id": "22222222-2222-4222-8222-222222222222",
+      "mandate_id": "cacce3ce-3912-47ff-a592-672444788fae",
+      "purchase_id": "dcb2f9f2-53b0-49db-b5a3-e9e47e02709e",
+      "actor": "22222222-2222-4222-8222-222222222222",
+      "event": "RECONCILIATION_STARTED",
+      "details": {
+        "attempt": 1
+      },
+      "at": "2026-10-31T02:20:11.799Z"
+    },
+    {
+      "id": "69",
+      "owner_id": "22222222-2222-4222-8222-222222222222",
+      "mandate_id": "cacce3ce-3912-47ff-a592-672444788fae",
+      "purchase_id": "dcb2f9f2-53b0-49db-b5a3-e9e47e02709e",
+      "actor": "22222222-2222-4222-8222-222222222222",
+      "event": "RECONCILIATION_RESULT",
+      "details": {
+        "uncertain": []
+      },
+      "at": "2026-10-31T02:20:14.374Z"
+    },
+    {
+      "id": "70",
+      "owner_id": "22222222-2222-4222-8222-222222222222",
+      "mandate_id": "cacce3ce-3912-47ff-a592-672444788fae",
+      "purchase_id": "dcb2f9f2-53b0-49db-b5a3-e9e47e02709e",
+      "actor": "22222222-2222-4222-8222-222222222222",
+      "event": "PAYMENT_ATTEMPT",
+      "details": {
+        "kind": "AUTHORIZE",
+        "requestId": "7b611197-e9f5-4db6-a099-13d05e4633b9",
+        "payloadHash": "7cf2d61147f6e7eaf4175d7261099bedab51cf0aea52abcebfece8f42b9a189f"
+      },
+      "at": "2026-10-31T02:20:14.387Z"
+    },
+    {
+      "id": "71",
+      "owner_id": "22222222-2222-4222-8222-222222222222",
+      "mandate_id": "cacce3ce-3912-47ff-a592-672444788fae",
+      "purchase_id": "dcb2f9f2-53b0-49db-b5a3-e9e47e02709e",
+      "actor": "22222222-2222-4222-8222-222222222222",
+      "event": "PAYMENT_RESPONSE",
+      "details": {
+        "kind": "AUTHORIZE",
+        "orderId": "8DE04494E0613414B",
+        "authorizationId": "88N0380694842573V"
+      },
+      "at": "2026-10-31T02:20:18.495Z"
+    },
+    {
+      "id": "72",
+      "owner_id": "22222222-2222-4222-8222-222222222222",
+      "mandate_id": "cacce3ce-3912-47ff-a592-672444788fae",
+      "purchase_id": "dcb2f9f2-53b0-49db-b5a3-e9e47e02709e",
+      "actor": "22222222-2222-4222-8222-222222222222",
+      "event": "RECONCILIATION_STARTED",
+      "details": {
+        "attempt": 2
+      },
+      "at": "2026-10-31T02:20:24.136Z"
+    },
+    {
+      "id": "73",
+      "owner_id": "22222222-2222-4222-8222-222222222222",
+      "mandate_id": "cacce3ce-3912-47ff-a592-672444788fae",
+      "purchase_id": "dcb2f9f2-53b0-49db-b5a3-e9e47e02709e",
+      "actor": "22222222-2222-4222-8222-222222222222",
+      "event": "RECONCILIATION_RESULT",
+      "details": {
+        "uncertain": [],
+        "authorizationStatus": "CREATED"
+      },
+      "at": "2026-10-31T02:20:25.950Z"
+    },
+    {
+      "id": "75",
+      "owner_id": "22222222-2222-4222-8222-222222222222",
+      "mandate_id": "cacce3ce-3912-47ff-a592-672444788fae",
+      "purchase_id": "dcb2f9f2-53b0-49db-b5a3-e9e47e02709e",
+      "actor": "system",
+      "event": "CAPTURE_BLOCKED_AFTER_REVOCATION",
+      "details": {
+        "reason": "REVOKED"
+      },
+      "at": "2026-10-31T02:20:25.970Z"
+    },
+    {
+      "id": "76",
+      "owner_id": "22222222-2222-4222-8222-222222222222",
+      "mandate_id": "cacce3ce-3912-47ff-a592-672444788fae",
+      "purchase_id": "dcb2f9f2-53b0-49db-b5a3-e9e47e02709e",
+      "actor": "22222222-2222-4222-8222-222222222222",
+      "event": "PAYMENT_ATTEMPT",
+      "details": {
+        "kind": "VOID",
+        "requestId": "8691b4cc-7286-4283-a03d-a91482d64d20",
+        "payloadHash": "ea5ae7c6678302a606d8bb87d4df9fd499921a5437173c7f6804de797e0d3a8a"
+      },
+      "at": "2026-10-31T02:20:25.976Z"
+    },
+    {
+      "id": "77",
+      "owner_id": "22222222-2222-4222-8222-222222222222",
+      "mandate_id": "cacce3ce-3912-47ff-a592-672444788fae",
+      "purchase_id": "dcb2f9f2-53b0-49db-b5a3-e9e47e02709e",
+      "actor": "22222222-2222-4222-8222-222222222222",
+      "event": "RESERVATION_RELEASED",
+      "details": {
+        "reason": "AUTHORITATIVE_VOIDED",
+        "totalCents": 500
+      },
+      "at": "2026-10-31T02:20:30.676Z"
+    },
+    {
+      "id": "78",
+      "owner_id": "22222222-2222-4222-8222-222222222222",
+      "mandate_id": "cacce3ce-3912-47ff-a592-672444788fae",
+      "purchase_id": "dcb2f9f2-53b0-49db-b5a3-e9e47e02709e",
+      "actor": "22222222-2222-4222-8222-222222222222",
+      "event": "PAYMENT_RESPONSE",
+      "details": {
+        "kind": "VOID",
+        "orderId": "8DE04494E0613414B",
+        "authorizationId": "88N0380694842573V"
+      },
+      "at": "2026-10-31T02:20:30.677Z"
     }
   ],
   "evidence": [
@@ -3770,6 +3941,1046 @@
             "reference_id": "dcb2f9f2-53b0-49db-b5a3-e9e47e02709e"
           }
         ]
+      }
+    },
+    {
+      "id": "36",
+      "purchase_id": "dcb2f9f2-53b0-49db-b5a3-e9e47e02709e",
+      "at": "2026-10-31T02:20:14.356Z",
+      "method": "GET",
+      "path": "/v2/checkout/orders/8DE04494E0613414B",
+      "request_id": null,
+      "http": 200,
+      "debug_id": "ca52f2de818e8",
+      "request": null,
+      "response": {
+        "id": "8DE04494E0613414B",
+        "links": [
+          {
+            "rel": "self",
+            "href": "https://api.sandbox.paypal.com/v2/checkout/orders/8DE04494E0613414B",
+            "method": "GET"
+          },
+          {
+            "rel": "authorize",
+            "href": "https://api.sandbox.paypal.com/v2/checkout/orders/8DE04494E0613414B/authorize",
+            "method": "POST"
+          },
+          {
+            "rel": "update",
+            "href": "https://api.sandbox.paypal.com/v2/checkout/orders/8DE04494E0613414B",
+            "method": "PATCH"
+          }
+        ],
+        "payer": "[REDACTED]",
+        "intent": "AUTHORIZE",
+        "status": "APPROVED",
+        "create_time": "2026-10-31T02:17:49Z",
+        "payment_source": "[REDACTED]",
+        "purchase_units": [
+          {
+            "items": [
+              {
+                "name": "[REDACTED]",
+                "category": "PHYSICAL_GOODS",
+                "quantity": "1",
+                "unit_amount": {
+                  "value": "5.00",
+                  "currency_code": "USD"
+                }
+              }
+            ],
+            "payee": {
+              "merchant_id": "VY8VQJVTBFPV4"
+            },
+            "amount": {
+              "value": "5.00",
+              "breakdown": {
+                "shipping": {
+                  "value": "0.00",
+                  "currency_code": "USD"
+                },
+                "tax_total": {
+                  "value": "0.00",
+                  "currency_code": "USD"
+                },
+                "item_total": {
+                  "value": "5.00",
+                  "currency_code": "USD"
+                }
+              },
+              "currency_code": "USD"
+            },
+            "custom_id": "dcb2f9f2-53b0-49db-b5a3-e9e47e02709e",
+            "reference_id": "dcb2f9f2-53b0-49db-b5a3-e9e47e02709e"
+          }
+        ]
+      }
+    },
+    {
+      "id": "37",
+      "purchase_id": "dcb2f9f2-53b0-49db-b5a3-e9e47e02709e",
+      "at": "2026-10-31T02:20:15.141Z",
+      "method": "GET",
+      "path": "/v2/checkout/orders/8DE04494E0613414B",
+      "request_id": null,
+      "http": 200,
+      "debug_id": "ca52f2df1ee10",
+      "request": null,
+      "response": {
+        "id": "8DE04494E0613414B",
+        "links": [
+          {
+            "rel": "self",
+            "href": "https://api.sandbox.paypal.com/v2/checkout/orders/8DE04494E0613414B",
+            "method": "GET"
+          },
+          {
+            "rel": "authorize",
+            "href": "https://api.sandbox.paypal.com/v2/checkout/orders/8DE04494E0613414B/authorize",
+            "method": "POST"
+          },
+          {
+            "rel": "update",
+            "href": "https://api.sandbox.paypal.com/v2/checkout/orders/8DE04494E0613414B",
+            "method": "PATCH"
+          }
+        ],
+        "payer": "[REDACTED]",
+        "intent": "AUTHORIZE",
+        "status": "APPROVED",
+        "create_time": "2026-10-31T02:17:49Z",
+        "payment_source": "[REDACTED]",
+        "purchase_units": [
+          {
+            "items": [
+              {
+                "name": "[REDACTED]",
+                "category": "PHYSICAL_GOODS",
+                "quantity": "1",
+                "unit_amount": {
+                  "value": "5.00",
+                  "currency_code": "USD"
+                }
+              }
+            ],
+            "payee": {
+              "merchant_id": "VY8VQJVTBFPV4"
+            },
+            "amount": {
+              "value": "5.00",
+              "breakdown": {
+                "shipping": {
+                  "value": "0.00",
+                  "currency_code": "USD"
+                },
+                "tax_total": {
+                  "value": "0.00",
+                  "currency_code": "USD"
+                },
+                "item_total": {
+                  "value": "5.00",
+                  "currency_code": "USD"
+                }
+              },
+              "currency_code": "USD"
+            },
+            "custom_id": "dcb2f9f2-53b0-49db-b5a3-e9e47e02709e",
+            "reference_id": "dcb2f9f2-53b0-49db-b5a3-e9e47e02709e"
+          }
+        ]
+      }
+    },
+    {
+      "id": "38",
+      "purchase_id": "dcb2f9f2-53b0-49db-b5a3-e9e47e02709e",
+      "at": "2026-10-31T02:20:16.719Z",
+      "method": "POST",
+      "path": "/v2/checkout/orders/8DE04494E0613414B/authorize",
+      "request_id": "7b611197-e9f5-4db6-a099-13d05e4633b9",
+      "http": 201,
+      "debug_id": "ca52f2df688a4",
+      "request": {},
+      "response": {
+        "id": "8DE04494E0613414B",
+        "links": [
+          {
+            "rel": "self",
+            "href": "https://api.sandbox.paypal.com/v2/checkout/orders/8DE04494E0613414B",
+            "method": "GET"
+          }
+        ],
+        "payer": "[REDACTED]",
+        "intent": "AUTHORIZE",
+        "status": "COMPLETED",
+        "create_time": "2026-10-31T02:17:49Z",
+        "update_time": "2026-10-31T02:20:16Z",
+        "payment_source": "[REDACTED]",
+        "purchase_units": [
+          {
+            "items": [
+              {
+                "tax": {
+                  "value": "0.00",
+                  "currency_code": "USD"
+                },
+                "name": "[REDACTED]",
+                "category": "PHYSICAL_GOODS",
+                "quantity": "1",
+                "unit_amount": {
+                  "value": "5.00",
+                  "currency_code": "USD"
+                }
+              }
+            ],
+            "payee": {
+              "merchant_id": "VY8VQJVTBFPV4"
+            },
+            "amount": {
+              "value": "5.00",
+              "breakdown": {
+                "handling": {
+                  "value": "0.00",
+                  "currency_code": "USD"
+                },
+                "shipping": {
+                  "value": "0.00",
+                  "currency_code": "USD"
+                },
+                "insurance": {
+                  "value": "0.00",
+                  "currency_code": "USD"
+                },
+                "tax_total": {
+                  "value": "0.00",
+                  "currency_code": "USD"
+                },
+                "item_total": {
+                  "value": "5.00",
+                  "currency_code": "USD"
+                },
+                "shipping_discount": {
+                  "value": "0.00",
+                  "currency_code": "USD"
+                }
+              },
+              "currency_code": "USD"
+            },
+            "payments": {
+              "authorizations": [
+                {
+                  "id": "88N0380694842573V",
+                  "links": [
+                    {
+                      "rel": "self",
+                      "href": "https://api.sandbox.paypal.com/v2/payments/authorizations/88N0380694842573V",
+                      "method": "GET"
+                    },
+                    {
+                      "rel": "capture",
+                      "href": "https://api.sandbox.paypal.com/v2/payments/authorizations/88N0380694842573V/capture",
+                      "method": "POST"
+                    },
+                    {
+                      "rel": "void",
+                      "href": "https://api.sandbox.paypal.com/v2/payments/authorizations/88N0380694842573V/void",
+                      "method": "POST"
+                    },
+                    {
+                      "rel": "reauthorize",
+                      "href": "https://api.sandbox.paypal.com/v2/payments/authorizations/88N0380694842573V/reauthorize",
+                      "method": "POST"
+                    },
+                    {
+                      "rel": "up",
+                      "href": "https://api.sandbox.paypal.com/v2/checkout/orders/8DE04494E0613414B",
+                      "method": "GET"
+                    }
+                  ],
+                  "amount": {
+                    "value": "5.00",
+                    "currency_code": "USD"
+                  },
+                  "status": "CREATED",
+                  "custom_id": "dcb2f9f2-53b0-49db-b5a3-e9e47e02709e",
+                  "create_time": "2026-10-31T02:20:16Z",
+                  "update_time": "2026-10-31T02:20:16Z",
+                  "expiration_time": "2026-11-29T02:20:16Z",
+                  "seller_protection": {
+                    "status": "ELIGIBLE",
+                    "dispute_categories": [
+                      "ITEM_NOT_RECEIVED",
+                      "UNAUTHORIZED_TRANSACTION"
+                    ]
+                  }
+                }
+              ]
+            },
+            "custom_id": "dcb2f9f2-53b0-49db-b5a3-e9e47e02709e",
+            "description": "pens",
+            "reference_id": "dcb2f9f2-53b0-49db-b5a3-e9e47e02709e"
+          }
+        ]
+      }
+    },
+    {
+      "id": "39",
+      "purchase_id": "dcb2f9f2-53b0-49db-b5a3-e9e47e02709e",
+      "at": "2026-10-31T02:20:17.675Z",
+      "method": "GET",
+      "path": "/v2/checkout/orders/8DE04494E0613414B",
+      "request_id": null,
+      "http": 200,
+      "debug_id": "ca52f2e007e6a",
+      "request": null,
+      "response": {
+        "id": "8DE04494E0613414B",
+        "links": [
+          {
+            "rel": "self",
+            "href": "https://api.sandbox.paypal.com/v2/checkout/orders/8DE04494E0613414B",
+            "method": "GET"
+          }
+        ],
+        "payer": "[REDACTED]",
+        "intent": "AUTHORIZE",
+        "status": "COMPLETED",
+        "create_time": "2026-10-31T02:20:16Z",
+        "update_time": "2026-10-31T02:20:16Z",
+        "payment_source": "[REDACTED]",
+        "purchase_units": [
+          {
+            "items": [
+              {
+                "name": "[REDACTED]",
+                "category": "PHYSICAL_GOODS",
+                "quantity": "1",
+                "unit_amount": {
+                  "value": "5.00",
+                  "currency_code": "USD"
+                }
+              }
+            ],
+            "payee": {
+              "merchant_id": "VY8VQJVTBFPV4"
+            },
+            "amount": {
+              "value": "5.00",
+              "breakdown": {
+                "shipping": {
+                  "value": "0.00",
+                  "currency_code": "USD"
+                },
+                "tax_total": {
+                  "value": "0.00",
+                  "currency_code": "USD"
+                },
+                "item_total": {
+                  "value": "5.00",
+                  "currency_code": "USD"
+                }
+              },
+              "currency_code": "USD"
+            },
+            "payments": {
+              "authorizations": [
+                {
+                  "id": "88N0380694842573V",
+                  "links": [
+                    {
+                      "rel": "self",
+                      "href": "https://api.sandbox.paypal.com/v2/payments/authorizations/88N0380694842573V",
+                      "method": "GET"
+                    },
+                    {
+                      "rel": "capture",
+                      "href": "https://api.sandbox.paypal.com/v2/payments/authorizations/88N0380694842573V/capture",
+                      "method": "POST"
+                    },
+                    {
+                      "rel": "void",
+                      "href": "https://api.sandbox.paypal.com/v2/payments/authorizations/88N0380694842573V/void",
+                      "method": "POST"
+                    },
+                    {
+                      "rel": "reauthorize",
+                      "href": "https://api.sandbox.paypal.com/v2/payments/authorizations/88N0380694842573V/reauthorize",
+                      "method": "POST"
+                    },
+                    {
+                      "rel": "up",
+                      "href": "https://api.sandbox.paypal.com/v2/checkout/orders/8DE04494E0613414B",
+                      "method": "GET"
+                    }
+                  ],
+                  "amount": {
+                    "value": "5.00",
+                    "currency_code": "USD"
+                  },
+                  "status": "CREATED",
+                  "custom_id": "dcb2f9f2-53b0-49db-b5a3-e9e47e02709e",
+                  "create_time": "2026-10-31T02:20:16Z",
+                  "update_time": "2026-10-31T02:20:16Z",
+                  "expiration_time": "2026-11-29T02:20:16Z",
+                  "seller_protection": {
+                    "status": "ELIGIBLE",
+                    "dispute_categories": [
+                      "ITEM_NOT_RECEIVED",
+                      "UNAUTHORIZED_TRANSACTION"
+                    ]
+                  }
+                }
+              ]
+            },
+            "custom_id": "dcb2f9f2-53b0-49db-b5a3-e9e47e02709e",
+            "reference_id": "dcb2f9f2-53b0-49db-b5a3-e9e47e02709e"
+          }
+        ]
+      }
+    },
+    {
+      "id": "40",
+      "purchase_id": "dcb2f9f2-53b0-49db-b5a3-e9e47e02709e",
+      "at": "2026-10-31T02:20:18.489Z",
+      "method": "GET",
+      "path": "/v2/payments/authorizations/88N0380694842573V",
+      "request_id": null,
+      "http": 200,
+      "debug_id": "ca52f2e068a8c",
+      "request": null,
+      "response": {
+        "id": "88N0380694842573V",
+        "links": [
+          {
+            "rel": "self",
+            "href": "https://api.sandbox.paypal.com/v2/payments/authorizations/88N0380694842573V",
+            "method": "GET"
+          },
+          {
+            "rel": "capture",
+            "href": "https://api.sandbox.paypal.com/v2/payments/authorizations/88N0380694842573V/capture",
+            "method": "POST"
+          },
+          {
+            "rel": "void",
+            "href": "https://api.sandbox.paypal.com/v2/payments/authorizations/88N0380694842573V/void",
+            "method": "POST"
+          },
+          {
+            "rel": "reauthorize",
+            "href": "https://api.sandbox.paypal.com/v2/payments/authorizations/88N0380694842573V/reauthorize",
+            "method": "POST"
+          },
+          {
+            "rel": "up",
+            "href": "https://api.sandbox.paypal.com/v2/checkout/orders/8DE04494E0613414B",
+            "method": "GET"
+          }
+        ],
+        "payee": {
+          "merchant_id": "VY8VQJVTBFPV4",
+          "email_address": "[REDACTED]"
+        },
+        "amount": {
+          "value": "5.00",
+          "currency_code": "USD"
+        },
+        "status": "CREATED",
+        "custom_id": "dcb2f9f2-53b0-49db-b5a3-e9e47e02709e",
+        "create_time": "2026-10-31T02:20:16Z",
+        "update_time": "2026-10-31T02:20:16Z",
+        "expiration_time": "2026-11-29T02:20:16Z",
+        "seller_protection": {
+          "status": "ELIGIBLE",
+          "dispute_categories": [
+            "ITEM_NOT_RECEIVED",
+            "UNAUTHORIZED_TRANSACTION"
+          ]
+        },
+        "supplementary_data": {
+          "related_ids": {
+            "order_id": "8DE04494E0613414B"
+          }
+        }
+      }
+    },
+    {
+      "id": "41",
+      "purchase_id": "dcb2f9f2-53b0-49db-b5a3-e9e47e02709e",
+      "at": "2026-10-31T02:20:25.102Z",
+      "method": "GET",
+      "path": "/v2/checkout/orders/8DE04494E0613414B",
+      "request_id": null,
+      "http": 200,
+      "debug_id": "ca52f2e2f5a5f",
+      "request": null,
+      "response": {
+        "id": "8DE04494E0613414B",
+        "links": [
+          {
+            "rel": "self",
+            "href": "https://api.sandbox.paypal.com/v2/checkout/orders/8DE04494E0613414B",
+            "method": "GET"
+          }
+        ],
+        "payer": "[REDACTED]",
+        "intent": "AUTHORIZE",
+        "status": "COMPLETED",
+        "create_time": "2026-10-31T02:20:16Z",
+        "update_time": "2026-10-31T02:20:16Z",
+        "payment_source": "[REDACTED]",
+        "purchase_units": [
+          {
+            "items": [
+              {
+                "name": "[REDACTED]",
+                "category": "PHYSICAL_GOODS",
+                "quantity": "1",
+                "unit_amount": {
+                  "value": "5.00",
+                  "currency_code": "USD"
+                }
+              }
+            ],
+            "payee": {
+              "merchant_id": "VY8VQJVTBFPV4"
+            },
+            "amount": {
+              "value": "5.00",
+              "breakdown": {
+                "shipping": {
+                  "value": "0.00",
+                  "currency_code": "USD"
+                },
+                "tax_total": {
+                  "value": "0.00",
+                  "currency_code": "USD"
+                },
+                "item_total": {
+                  "value": "5.00",
+                  "currency_code": "USD"
+                }
+              },
+              "currency_code": "USD"
+            },
+            "payments": {
+              "authorizations": [
+                {
+                  "id": "88N0380694842573V",
+                  "links": [
+                    {
+                      "rel": "self",
+                      "href": "https://api.sandbox.paypal.com/v2/payments/authorizations/88N0380694842573V",
+                      "method": "GET"
+                    },
+                    {
+                      "rel": "capture",
+                      "href": "https://api.sandbox.paypal.com/v2/payments/authorizations/88N0380694842573V/capture",
+                      "method": "POST"
+                    },
+                    {
+                      "rel": "void",
+                      "href": "https://api.sandbox.paypal.com/v2/payments/authorizations/88N0380694842573V/void",
+                      "method": "POST"
+                    },
+                    {
+                      "rel": "reauthorize",
+                      "href": "https://api.sandbox.paypal.com/v2/payments/authorizations/88N0380694842573V/reauthorize",
+                      "method": "POST"
+                    },
+                    {
+                      "rel": "up",
+                      "href": "https://api.sandbox.paypal.com/v2/checkout/orders/8DE04494E0613414B",
+                      "method": "GET"
+                    }
+                  ],
+                  "amount": {
+                    "value": "5.00",
+                    "currency_code": "USD"
+                  },
+                  "status": "CREATED",
+                  "custom_id": "dcb2f9f2-53b0-49db-b5a3-e9e47e02709e",
+                  "create_time": "2026-10-31T02:20:16Z",
+                  "update_time": "2026-10-31T02:20:16Z",
+                  "expiration_time": "2026-11-29T02:20:16Z",
+                  "seller_protection": {
+                    "status": "ELIGIBLE",
+                    "dispute_categories": [
+                      "ITEM_NOT_RECEIVED",
+                      "UNAUTHORIZED_TRANSACTION"
+                    ]
+                  }
+                }
+              ]
+            },
+            "custom_id": "dcb2f9f2-53b0-49db-b5a3-e9e47e02709e",
+            "reference_id": "dcb2f9f2-53b0-49db-b5a3-e9e47e02709e"
+          }
+        ]
+      }
+    },
+    {
+      "id": "42",
+      "purchase_id": "dcb2f9f2-53b0-49db-b5a3-e9e47e02709e",
+      "at": "2026-10-31T02:20:25.934Z",
+      "method": "GET",
+      "path": "/v2/payments/authorizations/88N0380694842573V",
+      "request_id": null,
+      "http": 200,
+      "debug_id": "ca52f2e34edb7",
+      "request": null,
+      "response": {
+        "id": "88N0380694842573V",
+        "links": [
+          {
+            "rel": "self",
+            "href": "https://api.sandbox.paypal.com/v2/payments/authorizations/88N0380694842573V",
+            "method": "GET"
+          },
+          {
+            "rel": "capture",
+            "href": "https://api.sandbox.paypal.com/v2/payments/authorizations/88N0380694842573V/capture",
+            "method": "POST"
+          },
+          {
+            "rel": "void",
+            "href": "https://api.sandbox.paypal.com/v2/payments/authorizations/88N0380694842573V/void",
+            "method": "POST"
+          },
+          {
+            "rel": "reauthorize",
+            "href": "https://api.sandbox.paypal.com/v2/payments/authorizations/88N0380694842573V/reauthorize",
+            "method": "POST"
+          },
+          {
+            "rel": "up",
+            "href": "https://api.sandbox.paypal.com/v2/checkout/orders/8DE04494E0613414B",
+            "method": "GET"
+          }
+        ],
+        "payee": {
+          "merchant_id": "VY8VQJVTBFPV4",
+          "email_address": "[REDACTED]"
+        },
+        "amount": {
+          "value": "5.00",
+          "currency_code": "USD"
+        },
+        "status": "CREATED",
+        "custom_id": "dcb2f9f2-53b0-49db-b5a3-e9e47e02709e",
+        "create_time": "2026-10-31T02:20:16Z",
+        "update_time": "2026-10-31T02:20:16Z",
+        "expiration_time": "2026-11-29T02:20:16Z",
+        "seller_protection": {
+          "status": "ELIGIBLE",
+          "dispute_categories": [
+            "ITEM_NOT_RECEIVED",
+            "UNAUTHORIZED_TRANSACTION"
+          ]
+        },
+        "supplementary_data": {
+          "related_ids": {
+            "order_id": "8DE04494E0613414B"
+          }
+        }
+      }
+    },
+    {
+      "id": "43",
+      "purchase_id": "dcb2f9f2-53b0-49db-b5a3-e9e47e02709e",
+      "at": "2026-10-31T02:20:26.889Z",
+      "method": "GET",
+      "path": "/v2/checkout/orders/8DE04494E0613414B",
+      "request_id": null,
+      "http": 200,
+      "debug_id": "ca52f2e3a58c6",
+      "request": null,
+      "response": {
+        "id": "8DE04494E0613414B",
+        "links": [
+          {
+            "rel": "self",
+            "href": "https://api.sandbox.paypal.com/v2/checkout/orders/8DE04494E0613414B",
+            "method": "GET"
+          }
+        ],
+        "payer": "[REDACTED]",
+        "intent": "AUTHORIZE",
+        "status": "COMPLETED",
+        "create_time": "2026-10-31T02:20:16Z",
+        "update_time": "2026-10-31T02:20:16Z",
+        "payment_source": "[REDACTED]",
+        "purchase_units": [
+          {
+            "items": [
+              {
+                "name": "[REDACTED]",
+                "category": "PHYSICAL_GOODS",
+                "quantity": "1",
+                "unit_amount": {
+                  "value": "5.00",
+                  "currency_code": "USD"
+                }
+              }
+            ],
+            "payee": {
+              "merchant_id": "VY8VQJVTBFPV4"
+            },
+            "amount": {
+              "value": "5.00",
+              "breakdown": {
+                "shipping": {
+                  "value": "0.00",
+                  "currency_code": "USD"
+                },
+                "tax_total": {
+                  "value": "0.00",
+                  "currency_code": "USD"
+                },
+                "item_total": {
+                  "value": "5.00",
+                  "currency_code": "USD"
+                }
+              },
+              "currency_code": "USD"
+            },
+            "payments": {
+              "authorizations": [
+                {
+                  "id": "88N0380694842573V",
+                  "links": [
+                    {
+                      "rel": "self",
+                      "href": "https://api.sandbox.paypal.com/v2/payments/authorizations/88N0380694842573V",
+                      "method": "GET"
+                    },
+                    {
+                      "rel": "capture",
+                      "href": "https://api.sandbox.paypal.com/v2/payments/authorizations/88N0380694842573V/capture",
+                      "method": "POST"
+                    },
+                    {
+                      "rel": "void",
+                      "href": "https://api.sandbox.paypal.com/v2/payments/authorizations/88N0380694842573V/void",
+                      "method": "POST"
+                    },
+                    {
+                      "rel": "reauthorize",
+                      "href": "https://api.sandbox.paypal.com/v2/payments/authorizations/88N0380694842573V/reauthorize",
+                      "method": "POST"
+                    },
+                    {
+                      "rel": "up",
+                      "href": "https://api.sandbox.paypal.com/v2/checkout/orders/8DE04494E0613414B",
+                      "method": "GET"
+                    }
+                  ],
+                  "amount": {
+                    "value": "5.00",
+                    "currency_code": "USD"
+                  },
+                  "status": "CREATED",
+                  "custom_id": "dcb2f9f2-53b0-49db-b5a3-e9e47e02709e",
+                  "create_time": "2026-10-31T02:20:16Z",
+                  "update_time": "2026-10-31T02:20:16Z",
+                  "expiration_time": "2026-11-29T02:20:16Z",
+                  "seller_protection": {
+                    "status": "ELIGIBLE",
+                    "dispute_categories": [
+                      "ITEM_NOT_RECEIVED",
+                      "UNAUTHORIZED_TRANSACTION"
+                    ]
+                  }
+                }
+              ]
+            },
+            "custom_id": "dcb2f9f2-53b0-49db-b5a3-e9e47e02709e",
+            "reference_id": "dcb2f9f2-53b0-49db-b5a3-e9e47e02709e"
+          }
+        ]
+      }
+    },
+    {
+      "id": "44",
+      "purchase_id": "dcb2f9f2-53b0-49db-b5a3-e9e47e02709e",
+      "at": "2026-10-31T02:20:27.706Z",
+      "method": "GET",
+      "path": "/v2/payments/authorizations/88N0380694842573V",
+      "request_id": null,
+      "http": 200,
+      "debug_id": "ca52f2e3ffbef",
+      "request": null,
+      "response": {
+        "id": "88N0380694842573V",
+        "links": [
+          {
+            "rel": "self",
+            "href": "https://api.sandbox.paypal.com/v2/payments/authorizations/88N0380694842573V",
+            "method": "GET"
+          },
+          {
+            "rel": "capture",
+            "href": "https://api.sandbox.paypal.com/v2/payments/authorizations/88N0380694842573V/capture",
+            "method": "POST"
+          },
+          {
+            "rel": "void",
+            "href": "https://api.sandbox.paypal.com/v2/payments/authorizations/88N0380694842573V/void",
+            "method": "POST"
+          },
+          {
+            "rel": "reauthorize",
+            "href": "https://api.sandbox.paypal.com/v2/payments/authorizations/88N0380694842573V/reauthorize",
+            "method": "POST"
+          },
+          {
+            "rel": "up",
+            "href": "https://api.sandbox.paypal.com/v2/checkout/orders/8DE04494E0613414B",
+            "method": "GET"
+          }
+        ],
+        "payee": {
+          "merchant_id": "VY8VQJVTBFPV4",
+          "email_address": "[REDACTED]"
+        },
+        "amount": {
+          "value": "5.00",
+          "currency_code": "USD"
+        },
+        "status": "CREATED",
+        "custom_id": "dcb2f9f2-53b0-49db-b5a3-e9e47e02709e",
+        "create_time": "2026-10-31T02:20:16Z",
+        "update_time": "2026-10-31T02:20:16Z",
+        "expiration_time": "2026-11-29T02:20:16Z",
+        "seller_protection": {
+          "status": "ELIGIBLE",
+          "dispute_categories": [
+            "ITEM_NOT_RECEIVED",
+            "UNAUTHORIZED_TRANSACTION"
+          ]
+        },
+        "supplementary_data": {
+          "related_ids": {
+            "order_id": "8DE04494E0613414B"
+          }
+        }
+      }
+    },
+    {
+      "id": "45",
+      "purchase_id": "dcb2f9f2-53b0-49db-b5a3-e9e47e02709e",
+      "at": "2026-10-31T02:20:28.955Z",
+      "method": "POST",
+      "path": "/v2/payments/authorizations/88N0380694842573V/void",
+      "request_id": "8691b4cc-7286-4283-a03d-a91482d64d20",
+      "http": 200,
+      "debug_id": "ca52f2e451e97",
+      "request": {},
+      "response": {
+        "id": "88N0380694842573V",
+        "links": [
+          {
+            "rel": "self",
+            "href": "https://api.sandbox.paypal.com/v2/payments/authorizations/88N0380694842573V",
+            "method": "GET"
+          }
+        ],
+        "amount": {
+          "value": "5.00",
+          "currency_code": "USD"
+        },
+        "status": "VOIDED",
+        "create_time": "2026-10-30T19:20:16-07:00",
+        "update_time": "2026-10-30T19:20:28-07:00",
+        "expiration_time": "2026-11-28T18:20:16-08:00",
+        "seller_protection": {
+          "status": "ELIGIBLE",
+          "dispute_categories": [
+            "ITEM_NOT_RECEIVED",
+            "UNAUTHORIZED_TRANSACTION"
+          ]
+        }
+      }
+    },
+    {
+      "id": "46",
+      "purchase_id": "dcb2f9f2-53b0-49db-b5a3-e9e47e02709e",
+      "at": "2026-10-31T02:20:29.820Z",
+      "method": "GET",
+      "path": "/v2/checkout/orders/8DE04494E0613414B",
+      "request_id": null,
+      "http": 200,
+      "debug_id": "ca52f2e4cea73",
+      "request": null,
+      "response": {
+        "id": "8DE04494E0613414B",
+        "links": [
+          {
+            "rel": "self",
+            "href": "https://api.sandbox.paypal.com/v2/checkout/orders/8DE04494E0613414B",
+            "method": "GET"
+          }
+        ],
+        "payer": "[REDACTED]",
+        "intent": "AUTHORIZE",
+        "status": "COMPLETED",
+        "create_time": "2026-10-31T02:20:16Z",
+        "update_time": "2026-10-31T02:20:28Z",
+        "payment_source": "[REDACTED]",
+        "purchase_units": [
+          {
+            "items": [
+              {
+                "name": "[REDACTED]",
+                "category": "PHYSICAL_GOODS",
+                "quantity": "1",
+                "unit_amount": {
+                  "value": "5.00",
+                  "currency_code": "USD"
+                }
+              }
+            ],
+            "payee": {
+              "merchant_id": "VY8VQJVTBFPV4"
+            },
+            "amount": {
+              "value": "5.00",
+              "breakdown": {
+                "shipping": {
+                  "value": "0.00",
+                  "currency_code": "USD"
+                },
+                "tax_total": {
+                  "value": "0.00",
+                  "currency_code": "USD"
+                },
+                "item_total": {
+                  "value": "5.00",
+                  "currency_code": "USD"
+                }
+              },
+              "currency_code": "USD"
+            },
+            "payments": {
+              "authorizations": [
+                {
+                  "id": "88N0380694842573V",
+                  "links": [
+                    {
+                      "rel": "self",
+                      "href": "https://api.sandbox.paypal.com/v2/payments/authorizations/88N0380694842573V",
+                      "method": "GET"
+                    },
+                    {
+                      "rel": "capture",
+                      "href": "https://api.sandbox.paypal.com/v2/payments/authorizations/88N0380694842573V/capture",
+                      "method": "POST"
+                    },
+                    {
+                      "rel": "void",
+                      "href": "https://api.sandbox.paypal.com/v2/payments/authorizations/88N0380694842573V/void",
+                      "method": "POST"
+                    },
+                    {
+                      "rel": "reauthorize",
+                      "href": "https://api.sandbox.paypal.com/v2/payments/authorizations/88N0380694842573V/reauthorize",
+                      "method": "POST"
+                    },
+                    {
+                      "rel": "up",
+                      "href": "https://api.sandbox.paypal.com/v2/checkout/orders/8DE04494E0613414B",
+                      "method": "GET"
+                    }
+                  ],
+                  "amount": {
+                    "value": "5.00",
+                    "currency_code": "USD"
+                  },
+                  "status": "VOIDED",
+                  "custom_id": "dcb2f9f2-53b0-49db-b5a3-e9e47e02709e",
+                  "create_time": "2026-10-31T02:20:16Z",
+                  "update_time": "2026-10-31T02:20:28Z",
+                  "expiration_time": "2026-11-29T02:20:16Z",
+                  "seller_protection": {
+                    "status": "ELIGIBLE",
+                    "dispute_categories": [
+                      "ITEM_NOT_RECEIVED",
+                      "UNAUTHORIZED_TRANSACTION"
+                    ]
+                  }
+                }
+              ]
+            },
+            "custom_id": "dcb2f9f2-53b0-49db-b5a3-e9e47e02709e",
+            "reference_id": "dcb2f9f2-53b0-49db-b5a3-e9e47e02709e"
+          }
+        ]
+      }
+    },
+    {
+      "id": "47",
+      "purchase_id": "dcb2f9f2-53b0-49db-b5a3-e9e47e02709e",
+      "at": "2026-10-31T02:20:30.668Z",
+      "method": "GET",
+      "path": "/v2/payments/authorizations/88N0380694842573V",
+      "request_id": null,
+      "http": 200,
+      "debug_id": "ca52f2e525d37",
+      "request": null,
+      "response": {
+        "id": "88N0380694842573V",
+        "links": [
+          {
+            "rel": "self",
+            "href": "https://api.sandbox.paypal.com/v2/payments/authorizations/88N0380694842573V",
+            "method": "GET"
+          },
+          {
+            "rel": "capture",
+            "href": "https://api.sandbox.paypal.com/v2/payments/authorizations/88N0380694842573V/capture",
+            "method": "POST"
+          },
+          {
+            "rel": "void",
+            "href": "https://api.sandbox.paypal.com/v2/payments/authorizations/88N0380694842573V/void",
+            "method": "POST"
+          },
+          {
+            "rel": "reauthorize",
+            "href": "https://api.sandbox.paypal.com/v2/payments/authorizations/88N0380694842573V/reauthorize",
+            "method": "POST"
+          },
+          {
+            "rel": "up",
+            "href": "https://api.sandbox.paypal.com/v2/checkout/orders/8DE04494E0613414B",
+            "method": "GET"
+          }
+        ],
+        "payee": {
+          "merchant_id": "VY8VQJVTBFPV4",
+          "email_address": "[REDACTED]"
+        },
+        "amount": {
+          "value": "5.00",
+          "currency_code": "USD"
+        },
+        "status": "VOIDED",
+        "custom_id": "dcb2f9f2-53b0-49db-b5a3-e9e47e02709e",
+        "create_time": "2026-10-31T02:20:16Z",
+        "update_time": "2026-10-31T02:20:28Z",
+        "expiration_time": "2026-11-29T02:20:16Z",
+        "seller_protection": {
+          "status": "ELIGIBLE",
+          "dispute_categories": [
+            "ITEM_NOT_RECEIVED",
+            "UNAUTHORIZED_TRANSACTION"
+          ]
+        },
+        "supplementary_data": {
+          "related_ids": {
+            "order_id": "8DE04494E0613414B"
+          }
+        }
       }
     }
   ]

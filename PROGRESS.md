@@ -169,3 +169,11 @@ Owner authorized creation of US sandbox fixtures and accepted the Developer Agre
 - Replacement order8DE04494E0613414B, purchase dcb2f9f2-53b0-49db-b5a3-e9e47e02709e, USD5.00, ORDER_CREATED,500HELD, hold_before_capture=true committed before PayPal CREATE. Permission expires2026-10-31T02:27:37.161Z (07:57:37IST). No authorization or capture yet. Same fixed-key script must never create another order or renew permission.
 - Opened sandbox approval in in-app browser tab9 and asked owner to approve using US personal sandbox buyer. Password not accessed. Handoff screenshot saved. Typecheck/lint passed. Redacted live-ledger export preserves all three orders.
 - After approval: reconcile this exact order, authorize only while valid with live-continue.ts hold, then revoke, verify REVOKED capture rejection, real VOID and authoritative reconciliation. Never run capture mode for this test. Do not create duplicates if callback times out.
+
+## Real revoke/void verification passed — 2026-10-31
+
+- Owner reported buyer approval of existing8DE04494E0613414B. Authoritative PayPal approval was reconciled and application validity rechecked before AUTHORIZE. Authorization88N0380694842573V confirmed CREATED; separate authorizePOST201 debugca52f2df688a4.
+- Revoked the test mandate, attempted CAPTURE through engine and confirmed REVOKED rejection/audit before any remote capture operation. Zero capturePOSTs, zero captureoperations, no captureID.
+- Real voidPOST200 returned VOIDED debugca52f2e451e97. Authoritative authorizationGET200 confirmed VOIDED debugca52f2e525d37. Independent subsequent reconciliation retained VOIDED/RELEASED.
+- Ledger exactly RESERVE500→RELEASE500, no SPEND. Test mandate6000available/0reserved/0spent. Previous captured payment and expired retired test unchanged. No duplicate order or payment mutation.
+- Redacted evidence/live-ledger.json and LIVE-VERIFICATION.md updated. Earlier real signed transaction-webhook verification remains valid evidence; this run does not claim a signed void webhook. Gemini task-level success, final no-charge hosting and Turbopack tooling gap remain open. No completion/deployment claimed.

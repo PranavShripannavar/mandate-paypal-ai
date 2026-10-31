@@ -35,9 +35,26 @@ These were real transaction events, not simulator events:
 
 The authorization and capture events reached APPLIED. The verified buyer-approval event was initially queued; a subsequent sweep processes persisted inbox entries. Signature success proves the received message verification, not hosted uptime. The temporary tunnel has no uptime guarantee and is not the final deployment.
 
+## Real authorize → revoke → blocked capture → void: VERIFIED 2026-10-31
+
+Owner approved the single replacement checkout8DE04494E0613414B for USD5.00. Application permission was valid when the backend authorized it. Purchase dcb2f9f2-53b0-49db-b5a3-e9e47e02709e had a durable capture hold before order creation.
+
+| Evidence | Result |
+|---|---|
+| Authorization | 88N0380694842573V; POST201, debug ca52f2df688a4; authoritative GET CREATED |
+| Mandate revocation | Persisted before attempted capture |
+| Capture attempt | Locally rejected REVOKED; audit CAPTURE_BLOCKED_AFTER_REVOCATION |
+| Remote capture POSTs / capture operations | 0 / 0 |
+| Void | POST200 VOIDED, debug ca52f2e451e97 |
+| Authoritative void readback | GET200 VOIDED, debug ca52f2e525d37 |
+| Ledger | RESERVE500 → RELEASE500; no SPEND |
+| Final state | VOIDED, RELEASED, no capture ID |
+| Test mandate budget | USD60 available,0reserved,0spent |
+
+The expired preceding test order2RL11757V75590309 remains disabled and RELEASED. Earlier capture5BK26228CM529704U remains CAPTURED/SPENT. No new order or capture was created after buyer approval. The signed transaction-webhook evidence above belongs to the earlier captured transaction; no signed void webhook is claimed for this run.
+
 ## Still open
 
-- Real authorize → revoke → capture blocked → void. The completed capture cannot be voided. Owner was asked for an exception to the latest no-new-orders instruction so one separate sandbox checkout can test this.
 - Successful live Gemini draft/proposal/explanation. Key is configured and model listing works. Gemini 2.5 Flash returned 404 for new users; 3.8 Flash returned bounded 504 timeouts. Unsupported MINIMAL was corrected to documented LOW. A tiny 3.1 Flash-Lite probe returned 503 high demand. Failed calls are recorded honestly; guided proposals are visibly labeled replay.
 - Subsequent tiny 3.1 Flash-Lite JSON probe returned ready:true / finishReason STOP. Default switched to that responding stable model, but full policy drafting still returned503; task-level AI verification remains OPEN. Adapter retries503/504 at most once and charges both attempts against server-side usage counters.
 - Final hosted deployment and hosted PostgreSQL. Connected Vercel team Pranav exists, but connector omits billing plan and has no projects. Asked owner to confirm no-charge hosting and configure a dedicated hosted PostgreSQL connection. No paid commitment or deployment created.
